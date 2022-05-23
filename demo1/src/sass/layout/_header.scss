@@ -47,6 +47,16 @@
 		.header-menu {
 			display: flex;
 		}
+
+		.header-nav {
+			justify-content: center;
+		}
+
+		.header-logout {
+			.btn {
+				padding: 5px 10px !important;
+			}
+		}
 	}
 }
 

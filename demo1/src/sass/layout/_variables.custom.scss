@@ -1,3 +1,26 @@
+// Header
+$header-config: (
+	// Default Mode
+	default: (
+		height: (
+			desktop: 80px,
+			tablet-and-mobile: 55px
+		),
+		bg-color: if(isDarkMode(),#1E1E2D, $white),
+	),
+
+	// Fixed Mode
+	fixed: (
+		height: (
+			desktop: 80px,
+			tablet-and-mobile: 55px
+		),
+		z-index: 100,
+		bg-color: if(isDarkMode(), #1E1E2D, $white),
+		box-shadow: if(isDarkMode(), none, 0px 10px 30px 0px rgba(82,63,105,0.05))
+	)
+);
+
 // Aside
 $aside-config: (
 	z-index: 101, // Aside's z-index property
