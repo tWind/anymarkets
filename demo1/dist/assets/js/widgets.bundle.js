@@ -1,849 +1,6 @@
 "use strict";
 
 // Class definition
-var KTMapsWidget1 = (function () {
-    // Private methods
-    var initMap = function () {
-        // Check if amchart library is included
-        if (typeof am5 === 'undefined') {
-            return;
-        }
-
-        var element = document.getElementById("kt_maps_widget_1_map");
-
-        if (!element) {
-            return;
-        }
-
-        // On amchart ready
-        am5.ready(function () {
-            // Create root element
-            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
-            var root = am5.Root.new(element);
-
-            // Set themes
-            // https://www.amcharts.com/docs/v5/concepts/themes/
-            root.setThemes([am5themes_Animated.new(root)]);
-
-            // Create the map chart
-            // https://www.amcharts.com/docs/v5/charts/map-chart/
-            var chart = root.container.children.push(
-                am5map.MapChart.new(root, {
-                    panX: "translateX",
-                    panY: "translateY",
-                    projection: am5map.geoMercator(),
-					paddingLeft: 0,
-					paddingrIGHT: 0,
-					paddingBottom: 0
-                })
-            );
-
-            // Create main polygon series for countries
-            // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-            var polygonSeries = chart.series.push(
-                am5map.MapPolygonSeries.new(root, {
-                    geoJSON: am5geodata_worldLow,
-                    exclude: ["AQ"],
-                })
-            );
-
-            polygonSeries.mapPolygons.template.setAll({
-                tooltipText: "{name}",
-                toggleKey: "active",
-                interactive: true,
-				fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
-            });
-
-            polygonSeries.mapPolygons.template.states.create("hover", {
-                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
-            });
-
-            polygonSeries.mapPolygons.template.states.create("active", {
-                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
-            });
-
-            // Highlighted Series
-            // Create main polygon series for countries
-            // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
-            var polygonSeriesHighlighted = chart.series.push(
-                am5map.MapPolygonSeries.new(root, {
-                    //geoJSON: am5geodata_usaLow,
-					geoJSON: am5geodata_worldLow,
-					include: ['US', 'BR', 'RU']
-                })
-            );
-
-            polygonSeriesHighlighted.mapPolygons.template.setAll({
-                tooltipText: "{name}",
-                toggleKey: "active",
-                interactive: true,
-            });
-
-            var colors = am5.ColorSet.new(root, {});
-
-            polygonSeriesHighlighted.mapPolygons.template.set(
-                "fill",
-				am5.color(KTUtil.getCssVariableValue('--bs-primary')),
-            );
-
-            polygonSeriesHighlighted.mapPolygons.template.states.create("hover", {
-                fill: root.interfaceColors.get("primaryButtonHover"),
-            });
-
-            polygonSeriesHighlighted.mapPolygons.template.states.create("active", {
-                fill: root.interfaceColors.get("primaryButtonHover"),
-            });
-
-            // Add zoom control
-            // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
-            //chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
-
-            // Set clicking on "water" to zoom out
-            chart.chartContainer
-                .get("background")
-                .events.on("click", function () {
-                    chart.goHome();
-                });
-
-            // Make stuff animate on load
-            chart.appear(1000, 100);
-        }); // end am5.ready()
-    };
-
-    // Public methods
-    return {
-        init: function () {
-            initMap();
-        },
-    };
-})();
-
-// Webpack support
-if (typeof module !== "undefined") {
-    module.exports = KTMapsWidget1;
-}
-
-// On document ready
-KTUtil.onDOMContentLoaded(function () {
-    KTMapsWidget1.init();
-});
-
-"use strict";
-
-// Class definition
-var KTSlidersWidget1 = function() {
-    // Private methods
-    var initChart = function(query, data) {
-        var element = document.querySelector(query);
-
-        if ( !element) {
-            return;
-        }              
-        
-        if ( element.classList.contains("initialized") ) {
-            return;
-        }
-
-        var height = parseInt(KTUtil.css(element, 'height'));
-        var baseColor = KTUtil.getCssVariableValue('--bs-' + 'primary');
-        var lightColor = KTUtil.getCssVariableValue('--bs-light-' + 'primary' );         
-
-        var options = {
-            series: [data],
-            chart: {
-                fontFamily: 'inherit',
-                height: height,
-                type: 'radialBar',
-                sparkline: {
-                    enabled: true,
-                }
-            },
-            plotOptions: {
-                radialBar: {
-                    hollow: {
-                        margin: 0,
-                        size: "45%"
-                    },
-                    dataLabels: {
-                        showOn: "always",
-                        name: {
-                            show: false                                 
-                        },
-                        value: {                                 
-                            show: false                              
-                        }
-                    },
-                    track: {
-                        background: lightColor,
-                        strokeWidth: '100%'
-                    }
-                }
-            },
-            colors: [baseColor],
-            stroke: {
-                lineCap: "round",
-            },
-            labels: ["Progress"]
-        };
-
-        var chart = new ApexCharts(element, options);
-        chart.render();
-        element.classList.add('initialized');
-    }
-
-    // Public methods
-    return {
-        init: function () {
-            // Init default chart
-            initChart('#kt_slider_widget_1_chart_1', 76);
-
-            var carousel = document.querySelector('#kt_sliders_widget_1_slider');
-            if(!carousel){
-                return;
-            }
-            carousel.addEventListener('slid.bs.carousel', function (e) {
-                if (e.to === 1) {
-                    // Init second chart
-                    initChart('#kt_slider_widget_1_chart_2', 55);
-                }
-
-                if (e.to === 2) {
-                    // Init third chart
-                    initChart('#kt_slider_widget_1_chart_3', 25);
-                }
-            });
-        }   
-    }        
-}();
-
-
-// Webpack support
-if (typeof module !== 'undefined') {
-    module.exports = KTSlidersWidget1;
-}
-
-// On document ready
-KTUtil.onDOMContentLoaded(function() {
-    KTSlidersWidget1.init();
-});
-   
-        
-        
-        
-           
-"use strict";
-
-// Class definition
-var KTSlidersWidget3 = function () {
-    // Private methods
-    var initChart = function(query, data) {
-        var element = document.querySelector(query);
-
-        if (!element) {
-            return;
-        }
-        
-        if ( element.classList.contains("initialized") ) {
-            return;
-        }
-
-        var height = parseInt(KTUtil.css(element, 'height'));
-        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
-        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
-        var baseColor = KTUtil.getCssVariableValue('--bs-danger');
-        var lightColor = KTUtil.getCssVariableValue('--bs-danger');
-
-        var options = {
-            series: [{
-                name: 'Sales',
-                data: data
-            }],            
-            chart: {
-                fontFamily: 'inherit',
-                type: 'area',
-                height: height,
-                toolbar: {
-                    show: false
-                }
-            },
-            plotOptions: {
-
-            },
-            legend: {
-                show: false
-            },
-            dataLabels: {
-                enabled: false
-            },
-            fill: {
-                type: "gradient",
-                gradient: {
-                shadeIntensity: 1,
-                opacityFrom: 0.3,
-                opacityTo: 0.7,
-                stops: [0, 90, 100]
-                }
-            },
-            stroke: {
-                curve: 'smooth',
-                show: true,
-                width: 3,
-                colors: [baseColor]
-            },
-            xaxis: {
-                categories: ['', 'Apr 05', 'Apr 06', 'Apr 07', 'Apr 08', 'Apr 09', 'Apr 11', 'Apr 12', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', ''],
-                axisBorder: {
-                    show: false,
-                },
-                axisTicks: {
-                    show: false
-                },
-                tickAmount: 6,
-                labels: {
-                    rotate: 0,
-                    rotateAlways: true,
-                    style: {
-                        colors: labelColor,
-                        fontSize: '12px'
-                    }
-                },
-                crosshairs: {
-                    position: 'front',
-                    stroke: {
-                        color: baseColor,
-                        width: 1,
-                        dashArray: 3
-                    }
-                },
-                tooltip: {
-                    enabled: true,
-                    formatter: undefined,
-                    offsetY: 0,
-                    style: {
-                        fontSize: '12px'
-                    }
-                }
-            },
-            yaxis: {
-                tickAmount: 4,
-                max: 24,
-                min: 10,
-                labels: {
-                    style: {
-                        colors: labelColor,
-                        fontSize: '12px'
-                    } 
-                }
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: false,
-                    filter: {
-                        type: 'none',
-                        value: 0
-                    }
-                }
-            },
-            tooltip: {
-                style: {
-                    fontSize: '12px'
-                } 
-            },
-            colors: [lightColor],
-            grid: {
-                borderColor: borderColor,
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: true
-                    }
-                }
-            },
-            markers: {
-                strokeColor: baseColor,
-                strokeWidth: 3
-            }
-        };
-
-        var chart = new ApexCharts(element, options);
-        chart.render();
-        element.classList.add('initialized');   
-    }
-
-    // Public methods
-    return {
-        init: function () {
-            // Init default chart
-            initChart('#kt_slider_widget_3_chart_1', [18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22]);
-
-            var carousel = document.querySelector('#kt_sliders_widget_3_slider');
-            if(!carousel){
-                return;
-            }
-            carousel.addEventListener('slid.bs.carousel', function (e) {
-                if (e.to === 1) {
-                    // Init second chart
-                    initChart('#kt_slider_widget_3_chart_2', [18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22]);
-                }                
-            });
-        }   
-    }
-}();
-
-// Webpack support
-if (typeof module !== 'undefined') {
-    module.exports = KTSlidersWidget3;
-}
-
-// On document ready
-KTUtil.onDOMContentLoaded(function() {
-    KTSlidersWidget3.init();
-});
-
-"use strict";
-
-// Class definition
-var KTTablesWidget3 = function () {
-    var table;
-    var datatable;
-
-    // Private methods
-    const initDatatable = () => {
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable({
-            "info": false,
-            'order': [],
-            'paging': false,
-            'pageLength': false,
-        });
-    }
-
-    const handleTabStates = () => {
-        const tabs = document.querySelector('[data-kt-table-widget-3="tabs_nav"]');
-        const tabButtons = tabs.querySelectorAll('[data-kt-table-widget-3="tab"]');
-        const tabClasses = ['border-bottom', 'border-3', 'border-primary'];
-
-        tabButtons.forEach(tab => {
-            tab.addEventListener('click', e => {
-                // Get datatable filter value
-                const value = tab.getAttribute('data-kt-table-widget-3-value');
-                tabButtons.forEach(t => {
-                    t.classList.remove(...tabClasses);
-                    t.classList.add('text-muted');
-                });
-
-                tab.classList.remove('text-muted');
-                tab.classList.add(...tabClasses);
-
-                // Filter datatable
-                if (value === 'Show All') {
-                    datatable.search('').draw();
-                } else {
-                    datatable.search(value).draw();
-                }
-            });
-        });
-    }
-
-    // Handle status filter dropdown
-    const handleStatusFilter = () => {
-        const select = document.querySelector('[data-kt-table-widget-3="filter_status"]');
-
-        $(select).on('select2:select', function (e) {
-            const value = $(this).val();
-            if (value === 'Show All') {
-                datatable.search('').draw();
-            } else {
-                datatable.search(value).draw();
-            }
-        });
-    }
-
-    // Public methods
-    return {
-        init: function () {
-            table = document.querySelector('#kt_widget_table_3');
-
-            if (!table) {
-                return;
-            }
-
-            initDatatable();
-            handleTabStates();
-            handleStatusFilter();
-        }
-    }
-}();
-
-// Webpack support
-if (typeof module !== 'undefined') {
-    module.exports = KTTablesWidget3;
-}
-
-// On document ready
-KTUtil.onDOMContentLoaded(function () {
-    KTTablesWidget3.init();
-});
-
-"use strict";
-
-// Class definition
-var KTTablesWidget4 = function () {
-    var table;
-    var datatable;
-    var template;
-
-    // Private methods
-    const initDatatable = () => {
-        // Set date data order
-        const tableRows = table.querySelectorAll('tbody tr');
-
-        tableRows.forEach(row => {
-            const dateRow = row.querySelectorAll('td');
-            const realDate = moment(dateRow[1].innerHTML, "DD MMM YYYY, LT").format(); // select date from 2nd column in table
-
-            // Skip template
-            if (!row.closest('[data-kt-table-widget-4="subtable_template"]')) {
-                dateRow[1].setAttribute('data-order', realDate);
-                dateRow[1].innerText = moment(realDate).fromNow();
-            }
-        });
-
-        // Get subtable template
-        const subtable = document.querySelector('[data-kt-table-widget-4="subtable_template"]');
-        template = subtable.cloneNode(true);
-        template.classList.remove('d-none');
-
-        // Remove subtable template
-        subtable.parentNode.removeChild(subtable);
-
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable({
-            "info": false,
-            'order': [],
-            "lengthChange": false,
-            'pageLength': 6,
-            'ordering': false,
-            'paging': false,
-            'columnDefs': [
-                { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
-                { orderable: false, targets: 6 }, // Disable ordering on column 6 (actions)
-            ]
-        });
-
-        // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
-        datatable.on('draw', function () {
-            resetSubtable();
-            handleActionButton();
-        });
-    }
-
-    // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
-    var handleSearchDatatable = () => {
-        const filterSearch = document.querySelector('[data-kt-table-widget-4="search"]');
-        filterSearch.addEventListener('keyup', function (e) {
-            datatable.search(e.target.value).draw();
-        });
-    }
-
-    // Handle status filter
-    const handleStatusFilter = () => {
-        const select = document.querySelector('[data-kt-table-widget-4="filter_status"]');
-
-        $(select).on('select2:select', function (e) {
-            const value = $(this).val();
-            if (value === 'Show All') {
-                datatable.search('').draw();
-            } else {
-                datatable.search(value).draw();
-            }
-        });
-    }
-
-    // Subtable data sample
-    const data = [
-        {
-            image: '76',
-            name: 'Go Pro 8',
-            description: 'Latest  version of Go Pro.',
-            cost: '500.00',
-            qty: '1',
-            total: '500.00',
-            stock: '12'
-        },
-        {
-            image: '60',
-            name: 'Bose Earbuds',
-            description: 'Top quality earbuds from Bose.',
-            cost: '300.00',
-            qty: '1',
-            total: '300.00',
-            stock: '8'
-        },
-        {
-            image: '211',
-            name: 'Dry-fit Sports T-shirt',
-            description: 'Comfortable sportswear.',
-            cost: '89.00',
-            qty: '1',
-            total: '89.00',
-            stock: '18'
-        },
-        {
-            image: '21',
-            name: 'Apple Airpod 3',
-            description: 'Apple\'s latest earbuds.',
-            cost: '200.00',
-            qty: '2',
-            total: '400.00',
-            stock: '32'
-        },
-        {
-            image: '83',
-            name: 'Nike Pumps',
-            description: 'Apple\'s latest headphones.',
-            cost: '200.00',
-            qty: '1',
-            total: '200.00',
-            stock: '8'
-        }
-    ];
-
-    // Handle action button
-    const handleActionButton = () => {
-        const buttons = document.querySelectorAll('[data-kt-table-widget-4="expand_row"]');
-
-        // Sample row items counter --- for demo purpose only, remove this variable in your project
-        const rowItems = [3, 1, 3, 1, 2, 1];
-
-        buttons.forEach((button, index) => {
-            button.addEventListener('click', e => {
-                e.stopImmediatePropagation();
-                e.preventDefault();
-
-                const row = button.closest('tr');
-                const rowClasses = ['isOpen', 'border-bottom-0'];
-
-                // Get total number of items to generate --- for demo purpose only, remove this code snippet in your project
-                const demoData = [];
-                for (var j = 0; j < rowItems[index]; j++) {
-                    demoData.push(data[j]);
-                }
-                // End of generating demo data
-
-                // Handle subtable expanded state
-                if (row.classList.contains('isOpen')) {
-                    // Remove all subtables from current order row
-                    while (row.nextSibling && row.nextSibling.getAttribute('data-kt-table-widget-4') === 'subtable_template') {
-                        row.nextSibling.parentNode.removeChild(row.nextSibling);
-                    }
-                    row.classList.remove(...rowClasses);
-                    button.classList.remove('active');
-                } else {
-                    populateTemplate(demoData, row);
-                    row.classList.add(...rowClasses);
-                    button.classList.add('active');
-                }
-            });
-        });
-    }
-
-    // Populate template with content/data -- content/data can be replaced with relevant data from database or API
-    const populateTemplate = (data, target) => {
-        data.forEach((d, index) => {
-            // Clone template node
-            const newTemplate = template.cloneNode(true);
-
-            // Stock badges
-            const lowStock = `<div class="badge badge-light-warning">Low Stock</div>`;
-            const inStock = `<div class="badge badge-light-success">In Stock</div>`;
-
-            // Select data elements
-            const image = newTemplate.querySelector('[data-kt-table-widget-4="template_image"]');
-            const name = newTemplate.querySelector('[data-kt-table-widget-4="template_name"]');
-            const description = newTemplate.querySelector('[data-kt-table-widget-4="template_description"]');
-            const cost = newTemplate.querySelector('[data-kt-table-widget-4="template_cost"]');
-            const qty = newTemplate.querySelector('[data-kt-table-widget-4="template_qty"]');
-            const total = newTemplate.querySelector('[data-kt-table-widget-4="template_total"]');
-            const stock = newTemplate.querySelector('[data-kt-table-widget-4="template_stock"]');
-
-            // Populate elements with data
-            const imageSrc = image.getAttribute('data-kt-src-path');
-            image.setAttribute('src', imageSrc + d.image + '.gif');
-            name.innerText = d.name;
-            description.innerText = d.description;
-            cost.innerText = d.cost;
-            qty.innerText = d.qty;
-            total.innerText = d.total;
-            if (d.stock > 10) {
-                stock.innerHTML = inStock;
-            } else {
-                stock.innerHTML = lowStock;
-            }
-
-            // New template border controller
-            // When only 1 row is available
-            if (data.length === 1) {
-                //let borderClasses = ['rounded', 'rounded-end-0'];
-                //newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
-                //borderClasses = ['rounded', 'rounded-start-0'];
-                //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
-
-                // Remove bottom border
-                //newTemplate.classList.add('border-bottom-0');
-            } else {
-                // When multiple rows detected
-                if (index === (data.length - 1)) { // first row
-                    //let borderClasses = ['rounded-start', 'rounded-bottom-0'];
-                   // newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
-                    //borderClasses = ['rounded-end', 'rounded-bottom-0'];
-                    //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
-                }
-                if (index === 0) { // last row
-                    //let borderClasses = ['rounded-start', 'rounded-top-0'];
-                    //newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
-                    //borderClasses = ['rounded-end', 'rounded-top-0'];
-                    //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
-
-                    // Remove bottom border on last row
-                    //newTemplate.classList.add('border-bottom-0');
-                }
-            }
-
-            // Insert new template into table
-            const tbody = table.querySelector('tbody');
-            tbody.insertBefore(newTemplate, target.nextSibling);
-        });
-    }
-
-    // Reset subtable
-    const resetSubtable = () => {
-        const subtables = document.querySelectorAll('[data-kt-table-widget-4="subtable_template"]');
-        subtables.forEach(st => {
-            st.parentNode.removeChild(st);
-        });
-
-        const rows = table.querySelectorAll('tbody tr');
-        rows.forEach(r => {
-            r.classList.remove('isOpen');
-            if (r.querySelector('[data-kt-table-widget-4="expand_row"]')) {
-                r.querySelector('[data-kt-table-widget-4="expand_row"]').classList.remove('active');
-            }
-        });
-    }
-
-    // Public methods
-    return {
-        init: function () {
-            table = document.querySelector('#kt_table_widget_4_table');
-
-            if (!table) {
-                return;
-            }
-
-            initDatatable();
-            handleSearchDatatable();
-            handleStatusFilter();
-            handleActionButton();
-        }
-    }
-}();
-
-// Webpack support
-if (typeof module !== 'undefined') {
-    module.exports = KTTablesWidget4;
-}
-
-// On document ready
-KTUtil.onDOMContentLoaded(function () {
-    KTTablesWidget4.init();
-});
-
-"use strict";
-
-// Class definition
-var KTTablesWidget5 = function () {
-    var table;
-    var datatable;
-
-    // Private methods
-    const initDatatable = () => {
-        // Set date data order
-        const tableRows = table.querySelectorAll('tbody tr');
-
-        tableRows.forEach(row => {
-            const dateRow = row.querySelectorAll('td');
-            const realDate = moment(dateRow[2].innerHTML, "MMM DD, YYYY").format(); // select date from 3rd column in table
-            dateRow[2].setAttribute('data-order', realDate);
-        });
-
-        // Init datatable --- more info on datatables: https://datatables.net/manual/
-        datatable = $(table).DataTable({
-            "info": false,
-            'order': [],
-            "lengthChange": false,
-            'pageLength': 6,
-            'paging': false,
-            'columnDefs': [
-                { orderable: false, targets: 1 }, // Disable ordering on column 1 (product id)
-            ]
-        });
-    }
-
-    // Handle status filter
-    const handleStatusFilter = () => {
-        const select = document.querySelector('[data-kt-table-widget-5="filter_status"]');
-
-        $(select).on('select2:select', function (e) {
-            const value = $(this).val();
-            if (value === 'Show All') {
-                datatable.search('').draw();
-            } else {
-                datatable.search(value).draw();
-            }
-        });
-    }
-
-    // Public methods
-    return {
-        init: function () {
-            table = document.querySelector('#kt_table_widget_5_table');
-
-            if (!table) {
-                return;
-            }
-
-            initDatatable();
-            handleStatusFilter();
-        }
-    }
-}();
-
-// Webpack support
-if (typeof module !== 'undefined') {
-    module.exports = KTTablesWidget5;
-}
-
-// On document ready
-KTUtil.onDOMContentLoaded(function () {
-    KTTablesWidget5.init();
-});
-
-"use strict";
-
-// Class definition
 var KTCardsWidget1 = function () {
     // Private methods
     var initChart = function() {
@@ -4982,6 +4139,565 @@ KTUtil.onDOMContentLoaded(function() {
 "use strict";
 
 // Class definition
+var KTMapsWidget1 = (function () {
+    // Private methods
+    var initMap = function () {
+        // Check if amchart library is included
+        if (typeof am5 === 'undefined') {
+            return;
+        }
+
+        var element = document.getElementById("kt_maps_widget_1_map");
+
+        if (!element) {
+            return;
+        }
+
+        // On amchart ready
+        am5.ready(function () {
+            // Create root element
+            // https://www.amcharts.com/docs/v5/getting-started/#Root_element
+            var root = am5.Root.new(element);
+
+            // Set themes
+            // https://www.amcharts.com/docs/v5/concepts/themes/
+            root.setThemes([am5themes_Animated.new(root)]);
+
+            // Create the map chart
+            // https://www.amcharts.com/docs/v5/charts/map-chart/
+            var chart = root.container.children.push(
+                am5map.MapChart.new(root, {
+                    panX: "translateX",
+                    panY: "translateY",
+                    projection: am5map.geoMercator(),
+					paddingLeft: 0,
+					paddingrIGHT: 0,
+					paddingBottom: 0
+                })
+            );
+
+            // Create main polygon series for countries
+            // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+            var polygonSeries = chart.series.push(
+                am5map.MapPolygonSeries.new(root, {
+                    geoJSON: am5geodata_worldLow,
+                    exclude: ["AQ"],
+                })
+            );
+
+            polygonSeries.mapPolygons.template.setAll({
+                tooltipText: "{name}",
+                toggleKey: "active",
+                interactive: true,
+				fill: am5.color(KTUtil.getCssVariableValue('--bs-gray-300')),
+            });
+
+            polygonSeries.mapPolygons.template.states.create("hover", {
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
+            });
+
+            polygonSeries.mapPolygons.template.states.create("active", {
+                fill: am5.color(KTUtil.getCssVariableValue('--bs-success')),
+            });
+
+            // Highlighted Series
+            // Create main polygon series for countries
+            // https://www.amcharts.com/docs/v5/charts/map-chart/map-polygon-series/
+            var polygonSeriesHighlighted = chart.series.push(
+                am5map.MapPolygonSeries.new(root, {
+                    //geoJSON: am5geodata_usaLow,
+					geoJSON: am5geodata_worldLow,
+					include: ['US', 'BR', 'RU']
+                })
+            );
+
+            polygonSeriesHighlighted.mapPolygons.template.setAll({
+                tooltipText: "{name}",
+                toggleKey: "active",
+                interactive: true,
+            });
+
+            var colors = am5.ColorSet.new(root, {});
+
+            polygonSeriesHighlighted.mapPolygons.template.set(
+                "fill",
+				am5.color(KTUtil.getCssVariableValue('--bs-primary')),
+            );
+
+            polygonSeriesHighlighted.mapPolygons.template.states.create("hover", {
+                fill: root.interfaceColors.get("primaryButtonHover"),
+            });
+
+            polygonSeriesHighlighted.mapPolygons.template.states.create("active", {
+                fill: root.interfaceColors.get("primaryButtonHover"),
+            });
+
+            // Add zoom control
+            // https://www.amcharts.com/docs/v5/charts/map-chart/map-pan-zoom/#Zoom_control
+            //chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+
+            // Set clicking on "water" to zoom out
+            chart.chartContainer
+                .get("background")
+                .events.on("click", function () {
+                    chart.goHome();
+                });
+
+            // Make stuff animate on load
+            chart.appear(1000, 100);
+        }); // end am5.ready()
+    };
+
+    // Public methods
+    return {
+        init: function () {
+            initMap();
+        },
+    };
+})();
+
+// Webpack support
+if (typeof module !== "undefined") {
+    module.exports = KTMapsWidget1;
+}
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTMapsWidget1.init();
+});
+
+"use strict";
+
+// Class definition
+var KTTablesWidget3 = function () {
+    var table;
+    var datatable;
+
+    // Private methods
+    const initDatatable = () => {
+        // Init datatable --- more info on datatables: https://datatables.net/manual/
+        datatable = $(table).DataTable({
+            "info": false,
+            'order': [],
+            'paging': false,
+            'pageLength': false,
+        });
+    }
+
+    const handleTabStates = () => {
+        const tabs = document.querySelector('[data-kt-table-widget-3="tabs_nav"]');
+        const tabButtons = tabs.querySelectorAll('[data-kt-table-widget-3="tab"]');
+        const tabClasses = ['border-bottom', 'border-3', 'border-primary'];
+
+        tabButtons.forEach(tab => {
+            tab.addEventListener('click', e => {
+                // Get datatable filter value
+                const value = tab.getAttribute('data-kt-table-widget-3-value');
+                tabButtons.forEach(t => {
+                    t.classList.remove(...tabClasses);
+                    t.classList.add('text-muted');
+                });
+
+                tab.classList.remove('text-muted');
+                tab.classList.add(...tabClasses);
+
+                // Filter datatable
+                if (value === 'Show All') {
+                    datatable.search('').draw();
+                } else {
+                    datatable.search(value).draw();
+                }
+            });
+        });
+    }
+
+    // Handle status filter dropdown
+    const handleStatusFilter = () => {
+        const select = document.querySelector('[data-kt-table-widget-3="filter_status"]');
+
+        $(select).on('select2:select', function (e) {
+            const value = $(this).val();
+            if (value === 'Show All') {
+                datatable.search('').draw();
+            } else {
+                datatable.search(value).draw();
+            }
+        });
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            table = document.querySelector('#kt_widget_table_3');
+
+            if (!table) {
+                return;
+            }
+
+            initDatatable();
+            handleTabStates();
+            handleStatusFilter();
+        }
+    }
+}();
+
+// Webpack support
+if (typeof module !== 'undefined') {
+    module.exports = KTTablesWidget3;
+}
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTTablesWidget3.init();
+});
+
+"use strict";
+
+// Class definition
+var KTTablesWidget4 = function () {
+    var table;
+    var datatable;
+    var template;
+
+    // Private methods
+    const initDatatable = () => {
+        // Set date data order
+        const tableRows = table.querySelectorAll('tbody tr');
+
+        tableRows.forEach(row => {
+            const dateRow = row.querySelectorAll('td');
+            const realDate = moment(dateRow[1].innerHTML, "DD MMM YYYY, LT").format(); // select date from 2nd column in table
+
+            // Skip template
+            if (!row.closest('[data-kt-table-widget-4="subtable_template"]')) {
+                dateRow[1].setAttribute('data-order', realDate);
+                dateRow[1].innerText = moment(realDate).fromNow();
+            }
+        });
+
+        // Get subtable template
+        const subtable = document.querySelector('[data-kt-table-widget-4="subtable_template"]');
+        template = subtable.cloneNode(true);
+        template.classList.remove('d-none');
+
+        // Remove subtable template
+        subtable.parentNode.removeChild(subtable);
+
+        // Init datatable --- more info on datatables: https://datatables.net/manual/
+        datatable = $(table).DataTable({
+            "info": false,
+            'order': [],
+            "lengthChange": false,
+            'pageLength': 6,
+            'ordering': false,
+            'paging': false,
+            'columnDefs': [
+                { orderable: false, targets: 0 }, // Disable ordering on column 0 (checkbox)
+                { orderable: false, targets: 6 }, // Disable ordering on column 6 (actions)
+            ]
+        });
+
+        // Re-init functions on every table re-draw -- more info: https://datatables.net/reference/event/draw
+        datatable.on('draw', function () {
+            resetSubtable();
+            handleActionButton();
+        });
+    }
+
+    // Search Datatable --- official docs reference: https://datatables.net/reference/api/search()
+    var handleSearchDatatable = () => {
+        const filterSearch = document.querySelector('[data-kt-table-widget-4="search"]');
+        filterSearch.addEventListener('keyup', function (e) {
+            datatable.search(e.target.value).draw();
+        });
+    }
+
+    // Handle status filter
+    const handleStatusFilter = () => {
+        const select = document.querySelector('[data-kt-table-widget-4="filter_status"]');
+
+        $(select).on('select2:select', function (e) {
+            const value = $(this).val();
+            if (value === 'Show All') {
+                datatable.search('').draw();
+            } else {
+                datatable.search(value).draw();
+            }
+        });
+    }
+
+    // Subtable data sample
+    const data = [
+        {
+            image: '76',
+            name: 'Go Pro 8',
+            description: 'Latest  version of Go Pro.',
+            cost: '500.00',
+            qty: '1',
+            total: '500.00',
+            stock: '12'
+        },
+        {
+            image: '60',
+            name: 'Bose Earbuds',
+            description: 'Top quality earbuds from Bose.',
+            cost: '300.00',
+            qty: '1',
+            total: '300.00',
+            stock: '8'
+        },
+        {
+            image: '211',
+            name: 'Dry-fit Sports T-shirt',
+            description: 'Comfortable sportswear.',
+            cost: '89.00',
+            qty: '1',
+            total: '89.00',
+            stock: '18'
+        },
+        {
+            image: '21',
+            name: 'Apple Airpod 3',
+            description: 'Apple\'s latest earbuds.',
+            cost: '200.00',
+            qty: '2',
+            total: '400.00',
+            stock: '32'
+        },
+        {
+            image: '83',
+            name: 'Nike Pumps',
+            description: 'Apple\'s latest headphones.',
+            cost: '200.00',
+            qty: '1',
+            total: '200.00',
+            stock: '8'
+        }
+    ];
+
+    // Handle action button
+    const handleActionButton = () => {
+        const buttons = document.querySelectorAll('[data-kt-table-widget-4="expand_row"]');
+
+        // Sample row items counter --- for demo purpose only, remove this variable in your project
+        const rowItems = [3, 1, 3, 1, 2, 1];
+
+        buttons.forEach((button, index) => {
+            button.addEventListener('click', e => {
+                e.stopImmediatePropagation();
+                e.preventDefault();
+
+                const row = button.closest('tr');
+                const rowClasses = ['isOpen', 'border-bottom-0'];
+
+                // Get total number of items to generate --- for demo purpose only, remove this code snippet in your project
+                const demoData = [];
+                for (var j = 0; j < rowItems[index]; j++) {
+                    demoData.push(data[j]);
+                }
+                // End of generating demo data
+
+                // Handle subtable expanded state
+                if (row.classList.contains('isOpen')) {
+                    // Remove all subtables from current order row
+                    while (row.nextSibling && row.nextSibling.getAttribute('data-kt-table-widget-4') === 'subtable_template') {
+                        row.nextSibling.parentNode.removeChild(row.nextSibling);
+                    }
+                    row.classList.remove(...rowClasses);
+                    button.classList.remove('active');
+                } else {
+                    populateTemplate(demoData, row);
+                    row.classList.add(...rowClasses);
+                    button.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // Populate template with content/data -- content/data can be replaced with relevant data from database or API
+    const populateTemplate = (data, target) => {
+        data.forEach((d, index) => {
+            // Clone template node
+            const newTemplate = template.cloneNode(true);
+
+            // Stock badges
+            const lowStock = `<div class="badge badge-light-warning">Low Stock</div>`;
+            const inStock = `<div class="badge badge-light-success">In Stock</div>`;
+
+            // Select data elements
+            const image = newTemplate.querySelector('[data-kt-table-widget-4="template_image"]');
+            const name = newTemplate.querySelector('[data-kt-table-widget-4="template_name"]');
+            const description = newTemplate.querySelector('[data-kt-table-widget-4="template_description"]');
+            const cost = newTemplate.querySelector('[data-kt-table-widget-4="template_cost"]');
+            const qty = newTemplate.querySelector('[data-kt-table-widget-4="template_qty"]');
+            const total = newTemplate.querySelector('[data-kt-table-widget-4="template_total"]');
+            const stock = newTemplate.querySelector('[data-kt-table-widget-4="template_stock"]');
+
+            // Populate elements with data
+            const imageSrc = image.getAttribute('data-kt-src-path');
+            image.setAttribute('src', imageSrc + d.image + '.gif');
+            name.innerText = d.name;
+            description.innerText = d.description;
+            cost.innerText = d.cost;
+            qty.innerText = d.qty;
+            total.innerText = d.total;
+            if (d.stock > 10) {
+                stock.innerHTML = inStock;
+            } else {
+                stock.innerHTML = lowStock;
+            }
+
+            // New template border controller
+            // When only 1 row is available
+            if (data.length === 1) {
+                //let borderClasses = ['rounded', 'rounded-end-0'];
+                //newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
+                //borderClasses = ['rounded', 'rounded-start-0'];
+                //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
+
+                // Remove bottom border
+                //newTemplate.classList.add('border-bottom-0');
+            } else {
+                // When multiple rows detected
+                if (index === (data.length - 1)) { // first row
+                    //let borderClasses = ['rounded-start', 'rounded-bottom-0'];
+                   // newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
+                    //borderClasses = ['rounded-end', 'rounded-bottom-0'];
+                    //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
+                }
+                if (index === 0) { // last row
+                    //let borderClasses = ['rounded-start', 'rounded-top-0'];
+                    //newTemplate.querySelectorAll('td')[0].classList.add(...borderClasses);
+                    //borderClasses = ['rounded-end', 'rounded-top-0'];
+                    //newTemplate.querySelectorAll('td')[4].classList.add(...borderClasses);
+
+                    // Remove bottom border on last row
+                    //newTemplate.classList.add('border-bottom-0');
+                }
+            }
+
+            // Insert new template into table
+            const tbody = table.querySelector('tbody');
+            tbody.insertBefore(newTemplate, target.nextSibling);
+        });
+    }
+
+    // Reset subtable
+    const resetSubtable = () => {
+        const subtables = document.querySelectorAll('[data-kt-table-widget-4="subtable_template"]');
+        subtables.forEach(st => {
+            st.parentNode.removeChild(st);
+        });
+
+        const rows = table.querySelectorAll('tbody tr');
+        rows.forEach(r => {
+            r.classList.remove('isOpen');
+            if (r.querySelector('[data-kt-table-widget-4="expand_row"]')) {
+                r.querySelector('[data-kt-table-widget-4="expand_row"]').classList.remove('active');
+            }
+        });
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            table = document.querySelector('#kt_table_widget_4_table');
+
+            if (!table) {
+                return;
+            }
+
+            initDatatable();
+            handleSearchDatatable();
+            handleStatusFilter();
+            handleActionButton();
+        }
+    }
+}();
+
+// Webpack support
+if (typeof module !== 'undefined') {
+    module.exports = KTTablesWidget4;
+}
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTTablesWidget4.init();
+});
+
+"use strict";
+
+// Class definition
+var KTTablesWidget5 = function () {
+    var table;
+    var datatable;
+
+    // Private methods
+    const initDatatable = () => {
+        // Set date data order
+        const tableRows = table.querySelectorAll('tbody tr');
+
+        tableRows.forEach(row => {
+            const dateRow = row.querySelectorAll('td');
+            const realDate = moment(dateRow[2].innerHTML, "MMM DD, YYYY").format(); // select date from 3rd column in table
+            dateRow[2].setAttribute('data-order', realDate);
+        });
+
+        // Init datatable --- more info on datatables: https://datatables.net/manual/
+        datatable = $(table).DataTable({
+            "info": false,
+            'order': [],
+            "lengthChange": false,
+            'pageLength': 6,
+            'paging': false,
+            'columnDefs': [
+                { orderable: false, targets: 1 }, // Disable ordering on column 1 (product id)
+            ]
+        });
+    }
+
+    // Handle status filter
+    const handleStatusFilter = () => {
+        const select = document.querySelector('[data-kt-table-widget-5="filter_status"]');
+
+        $(select).on('select2:select', function (e) {
+            const value = $(this).val();
+            if (value === 'Show All') {
+                datatable.search('').draw();
+            } else {
+                datatable.search(value).draw();
+            }
+        });
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            table = document.querySelector('#kt_table_widget_5_table');
+
+            if (!table) {
+                return;
+            }
+
+            initDatatable();
+            handleStatusFilter();
+        }
+    }
+}();
+
+// Webpack support
+if (typeof module !== 'undefined') {
+    module.exports = KTTablesWidget5;
+}
+
+// On document ready
+KTUtil.onDOMContentLoaded(function () {
+    KTTablesWidget5.init();
+});
+
+"use strict";
+
+// Class definition
 var KTTimelineWidget1 = function () {
     // Private methods
     // Day timeline
@@ -5640,3 +5356,286 @@ KTUtil.onDOMContentLoaded(function() {
 
 
  
+"use strict";
+
+// Class definition
+var KTSlidersWidget1 = function() {
+    // Private methods
+    var initChart = function(query, data) {
+        var element = document.querySelector(query);
+
+        if ( !element) {
+            return;
+        }              
+        
+        if ( element.classList.contains("initialized") ) {
+            return;
+        }
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var baseColor = KTUtil.getCssVariableValue('--bs-' + 'primary');
+        var lightColor = KTUtil.getCssVariableValue('--bs-light-' + 'primary' );         
+
+        var options = {
+            series: [data],
+            chart: {
+                fontFamily: 'inherit',
+                height: height,
+                type: 'radialBar',
+                sparkline: {
+                    enabled: true,
+                }
+            },
+            plotOptions: {
+                radialBar: {
+                    hollow: {
+                        margin: 0,
+                        size: "45%"
+                    },
+                    dataLabels: {
+                        showOn: "always",
+                        name: {
+                            show: false                                 
+                        },
+                        value: {                                 
+                            show: false                              
+                        }
+                    },
+                    track: {
+                        background: lightColor,
+                        strokeWidth: '100%'
+                    }
+                }
+            },
+            colors: [baseColor],
+            stroke: {
+                lineCap: "round",
+            },
+            labels: ["Progress"]
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+        element.classList.add('initialized');
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            // Init default chart
+            initChart('#kt_slider_widget_1_chart_1', 76);
+
+            var carousel = document.querySelector('#kt_sliders_widget_1_slider');
+            if(!carousel){
+                return;
+            }
+            carousel.addEventListener('slid.bs.carousel', function (e) {
+                if (e.to === 1) {
+                    // Init second chart
+                    initChart('#kt_slider_widget_1_chart_2', 55);
+                }
+
+                if (e.to === 2) {
+                    // Init third chart
+                    initChart('#kt_slider_widget_1_chart_3', 25);
+                }
+            });
+        }   
+    }        
+}();
+
+
+// Webpack support
+if (typeof module !== 'undefined') {
+    module.exports = KTSlidersWidget1;
+}
+
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTSlidersWidget1.init();
+});
+   
+        
+        
+        
+           
+"use strict";
+
+// Class definition
+var KTSlidersWidget3 = function () {
+    // Private methods
+    var initChart = function(query, data) {
+        var element = document.querySelector(query);
+
+        if (!element) {
+            return;
+        }
+        
+        if ( element.classList.contains("initialized") ) {
+            return;
+        }
+
+        var height = parseInt(KTUtil.css(element, 'height'));
+        var labelColor = KTUtil.getCssVariableValue('--bs-gray-500');
+        var borderColor = KTUtil.getCssVariableValue('--bs-border-dashed-color');
+        var baseColor = KTUtil.getCssVariableValue('--bs-danger');
+        var lightColor = KTUtil.getCssVariableValue('--bs-danger');
+
+        var options = {
+            series: [{
+                name: 'Sales',
+                data: data
+            }],            
+            chart: {
+                fontFamily: 'inherit',
+                type: 'area',
+                height: height,
+                toolbar: {
+                    show: false
+                }
+            },
+            plotOptions: {
+
+            },
+            legend: {
+                show: false
+            },
+            dataLabels: {
+                enabled: false
+            },
+            fill: {
+                type: "gradient",
+                gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.3,
+                opacityTo: 0.7,
+                stops: [0, 90, 100]
+                }
+            },
+            stroke: {
+                curve: 'smooth',
+                show: true,
+                width: 3,
+                colors: [baseColor]
+            },
+            xaxis: {
+                categories: ['', 'Apr 05', 'Apr 06', 'Apr 07', 'Apr 08', 'Apr 09', 'Apr 11', 'Apr 12', 'Apr 14', 'Apr 15', 'Apr 16', 'Apr 17', 'Apr 18', ''],
+                axisBorder: {
+                    show: false,
+                },
+                axisTicks: {
+                    show: false
+                },
+                tickAmount: 6,
+                labels: {
+                    rotate: 0,
+                    rotateAlways: true,
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    }
+                },
+                crosshairs: {
+                    position: 'front',
+                    stroke: {
+                        color: baseColor,
+                        width: 1,
+                        dashArray: 3
+                    }
+                },
+                tooltip: {
+                    enabled: true,
+                    formatter: undefined,
+                    offsetY: 0,
+                    style: {
+                        fontSize: '12px'
+                    }
+                }
+            },
+            yaxis: {
+                tickAmount: 4,
+                max: 24,
+                min: 10,
+                labels: {
+                    style: {
+                        colors: labelColor,
+                        fontSize: '12px'
+                    } 
+                }
+            },
+            states: {
+                normal: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                hover: {
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                },
+                active: {
+                    allowMultipleDataPointsSelection: false,
+                    filter: {
+                        type: 'none',
+                        value: 0
+                    }
+                }
+            },
+            tooltip: {
+                style: {
+                    fontSize: '12px'
+                } 
+            },
+            colors: [lightColor],
+            grid: {
+                borderColor: borderColor,
+                strokeDashArray: 4,
+                yaxis: {
+                    lines: {
+                        show: true
+                    }
+                }
+            },
+            markers: {
+                strokeColor: baseColor,
+                strokeWidth: 3
+            }
+        };
+
+        var chart = new ApexCharts(element, options);
+        chart.render();
+        element.classList.add('initialized');   
+    }
+
+    // Public methods
+    return {
+        init: function () {
+            // Init default chart
+            initChart('#kt_slider_widget_3_chart_1', [18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22]);
+
+            var carousel = document.querySelector('#kt_sliders_widget_3_slider');
+            if(!carousel){
+                return;
+            }
+            carousel.addEventListener('slid.bs.carousel', function (e) {
+                if (e.to === 1) {
+                    // Init second chart
+                    initChart('#kt_slider_widget_3_chart_2', [18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 18, 20, 20, 22]);
+                }                
+            });
+        }   
+    }
+}();
+
+// Webpack support
+if (typeof module !== 'undefined') {
+    module.exports = KTSlidersWidget3;
+}
+
+// On document ready
+KTUtil.onDOMContentLoaded(function() {
+    KTSlidersWidget3.init();
+});
