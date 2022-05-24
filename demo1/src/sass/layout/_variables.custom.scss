@@ -1,3 +1,6 @@
+// Page bg
+$page-bg: 											if(isDarkMode(), #151521, $gray-100);
+
 // Header
 $header-config: (
 	// Default Mode
@@ -35,4 +38,9 @@ $aside-config: (
 	minimized-width: 75px,  // Aside minimized width for desktop mode
 	box-shadow: if(isDarkMode(), none, 0 0 28px 0 rgba(82,63,105,.05)), // Aside box shadow
 	minimized-hover-box-shadow: if(isDarkMode(), none, 5px 0px 10px rgba(70, 78, 95, 0.075)) // Monimized hover box shadow
-)
+);
+
+// Footer
+$footer-config: (	
+	bg-color: if(isDarkMode(), #1B1B28, $page-bg),
+);
