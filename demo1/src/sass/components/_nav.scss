@@ -40,6 +40,7 @@
 	.nav-item .nav-link.active,
   	.nav-item.show .nav-link,
 	.nav-item .nav-link:hover:not(.disabled) {
+		color: $black-1;
 		background-color: transparent;
 		border: 0;
 		border-bottom: 1px solid $primary;
@@ -63,6 +64,17 @@
 	  	.nav-item.show .nav-link,
 		.nav-item .nav-link:hover:not(.disabled) {
 			border-bottom-width: 2px;
+		}
+	}
+}
+
+.nav-goods {
+	.nav-item {
+		display: flex;
+		align-items: flex-end;
+		
+		.nav-link {
+			margin: 0;
 		}
 	}
 }
