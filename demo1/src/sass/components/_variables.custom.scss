@@ -2,8 +2,16 @@
 $font-family-sans-serif:            				Mulish, Helvetica, "sans-serif" !default;
 
 // Colors
+// Primary colors
+$primary:       									#5B5CE2;
+
 $gray-100: 										    if(isDarkMode(), #1b1b29, #EEEEF5);
 $light-2: #F7F7FF;
+$black-1: #212121;
 
 // Success colors
 $success:       									#1BC58D; // Bootstrap variable
+
+// Forms
+$form-check-input-width-sm:                         1.75rem;
+$form-check-input-height-sm:                         1.75rem;
