@@ -1,4 +1,4 @@
 /tools/node_modules
-/demo1/dist/
+/demo1/dist/assets/
 /dist
 .DS_Store
