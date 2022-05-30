@@ -1,17 +1,72 @@
 // Font family
-$font-family-sans-serif:            				Mulish, Helvetica, "sans-serif" !default;
+$font-family-sans-serif:            				Mulish, Helvetica, "sans-serif";
 
 // Colors
-// Primary colors
-$primary:       									#5B5CE2;
-
+// Base colors
+$white:    											#ffffff;
 $gray-100: 										    if(isDarkMode(), #1b1b29, #EEEEF5);
+$gray-300: 										    if(isDarkMode(), #323248, #E4E6EF) !default;
+$gray-900: 										    if(isDarkMode(), #FFFFFF, #181C32) !default;
 $light-2: #F7F7FF;
 $black-1: #212121;
 
+// Dark colors
+$dark:          									$gray-900 !default;
+
+// Primary colors
+$primary:       									#5B5CE2;
+
+// Secondary colors
+$secondary:     									$gray-100;
+
+// Light colors
+$light:     									    if(isDarkMode(),$gray-300, $gray-100);
+
 // Success colors
-$success:       									#1BC58D; // Bootstrap variable
+$success:       									#1BC58D;
+
+// Inco colors
+$info:         		 								#8950FC !default;
+
+// Warning colors
+$warning:       									#FFA800 !default;
+
+
+// Danger colors
+$danger:        									#F64E60 !default;
+
+// White colors
+$white:    											$white !default;
+
+// Theme colors
+$theme-colors: (
+	"white":      $white,  // custom color type
+  "light":      $light-2,
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "dark":       $dark
+);
+
+// Typography
+//
+// Font, line-height, and color for body text, headings, and more.
+
+// Font family
+$font-weight-boldest:                               700 !default;
 
 // Forms
 $form-check-input-width-sm:                         1.75rem;
 $form-check-input-height-sm:                         1.75rem;
+
+$input-bg:                                          $gray-100;
+
+$form-label-font-size:                              1.15rem;
+$form-label-font-weight:                            700 !default;
+
+// Buttons
+
+$btn-font-weight:                                   $font-weight-boldest;

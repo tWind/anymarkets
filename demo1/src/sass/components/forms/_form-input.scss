@@ -1,0 +1,28 @@
+.form-input {
+  &.fv-plugins-bootstrap5-row-valid {
+    position: relative;
+    &::before {
+      content: "";
+      background-image: url("/dist/assets/media/icons/anymarket/icon-success.svg");
+    }
+  }
+
+  &.fv-plugins-bootstrap5-row-invalid {
+    position: relative;
+    &::before {
+      content: "";
+      background-image: url("/dist/assets/media/icons/anymarket/icon-error.svg");
+    }
+  }
+
+  &::before, &::after {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
