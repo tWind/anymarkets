@@ -197,12 +197,22 @@
 								<form id="kt_ecommerce_add_product_form" class="form">
 									<div class="card card-flush mb-5 mb-xl-8">
 										<!--begin::Card Header-->
-										<div class="card-header py-5">
-											<div class="btn btn-secondary">Основные</div>
+										<div class="card-header pt-5 pb-10">
+											<ul class="nav nav-tabs nav-pills nav-pills-custom border-0">
+												<li class="nav-item me-0">
+														<a class="nav-link active" data-bs-toggle="tab" href="#kt_vtab_pane_1">Основные</a>
+												</li>
+												<li class="nav-item me-0">
+														<a class="nav-link" data-bs-toggle="tab" href="#kt_vtab_pane_2">OZON</a>
+												</li>
+												<li class="nav-item">
+														<a class="nav-link" data-bs-toggle="tab" href="#kt_vtab_pane_3">Вконтакте</a>
+												</li>
+											</ul>
 										</div>
 										<!--end::Card Header-->
 										<!--begin::Card Body-->
-										<div class="card-body pb-3">
+										<div class="card-body border border-secondary rounded mx-10 mb-10 pb-3">
 											<!--begin::Input group-->
 											<div class="mb-10 fv-row">
 												<div class="col-8">
@@ -218,16 +228,212 @@
 											</div>
 											<!--end::Input group-->
 											<!--begin::Input group-->
-											<div class="mb-10 fv-row">
+											<div class="mb-15 row fv-row">
 												<div class="col-4">
 													<!--begin::Label-->
 													<label class="required form-label">Бренд</label>
 													<!--end::Label-->
 													<!--begin::Input-->
-													<input type="text" name="brand" class="form-control mb-2" placeholder="Бренд" value="" />
+													<div class="form-input">
+														<input type="text" name="brand" class="form-control mb-2" placeholder="Бренд" value="" />
+													</div>
 													<!--end::Input-->
 												</div>
-												<div class="col-4"></div>
+												<div class="col-4">
+													<!--begin::Label-->
+													<label class="required form-label">Артикул производителя</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<div class="form-input">
+														<input type="text" name="vendor_code" class="form-control mb-2" placeholder="Артикул производителя" value="" />
+													</div>
+													<!--end::Input-->
+												</div>
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="mb-10 row fv-row">
+												<div class="col-4">
+													<!--begin::Label-->
+													<label class="required form-label">Страна производства</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<div class="form-input">
+														<input type="text" name="production_country" class="form-control mb-2" placeholder="Страна производства" value="" />
+													</div>
+													<!--end::Input-->
+												</div>
+												<div class="col-4">
+													<!--begin::Label-->
+													<label class="required form-label">НДС</label>
+													<!--end::Label-->
+													<!--begin::Radiogroup-->
+													<div class="d-flex pt-3">
+														<div class="form-check form-check-custom form-check-solid me-7">
+															<input class="form-check-input" name="VAT" type="radio" value="" id="vat-0" />
+															<label class="form-check-label" for="vat-0">10%</label>
+														</div>
+														<div class="form-check form-check-custom form-check-solid me-7">
+															<input class="form-check-input" name="VAT" type="radio" value="" id="vat-1" />
+															<label class="form-check-label" for="vat-1">20%</label>
+														</div>
+														<div class="form-check form-check-custom form-check-solid">
+															<input class="form-check-input" name="VAT" type="radio" value="" id="vat-2" />
+															<label class="form-check-label" for="vat-2">Не облагается</label>
+														</div>
+													</div>
+													<!--end::Radiogroup-->
+												</div>
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="mb-10 row fv-row">
+												<div class="col-8">
+													<!--begin::Label-->
+													<label class="required form-label">Описание</label>
+													<!--end::Label-->
+													<!--begin::Textarea-->
+													<div class="form-input no-icon">
+														<textarea rows="4" name="production_country_1" class="form-control mb-2" value=""></textarea>
+													</div>
+													<!--end::Textarea-->
+												</div>
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="mb-10 row fv-row">
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Вес с упаковкой, грамм</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_weight" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Длина упаковки, мм</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_length" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Ширина упаковки, мм</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_width" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Высота упаковки, мм</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_height" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+											</div>
+											<!--end::Input group-->
+										</div>
+										<!--end::Card Body-->
+										<!--begin::Card Body-->
+										<div class="card-body border border-secondary rounded mx-10 mb-10 pb-3">
+											<!--begin::Input group-->
+											<div class="mb-10 fv-row">
+												<div class="col-8">
+													<!--end::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+														<label class="form-check-label" for="flexCheckDefault">
+															Несколько цветов/размеров/комплектаций в одной карточке товара
+														</label>
+													</div>
+													<!--end::Checkbox-->
+												</div>
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="mb-10 fv-row">
+												<div class="col-4">
+													<!--begin::Select2-->
+													<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Выберите цвет">
+														<option></option>
+														<option value="0">Красный</option>
+														<option value="1">Желтый</option>
+														<option value="2">Зеленый</option>
+													</select>
+													<!--end::Select2-->
+												</div>
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="mb-10 row fv-row">
+												<div class="col-4">
+													<!--begin::Label-->
+													<label class="required form-label">Артикул</label>
+													<!--end::Label-->
+													<!--end::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid mb-3">
+														<input class="form-check-input" type="checkbox" value="" id="vendor_code_auto"/>
+														<label class="form-check-label" for="vendor_code_auto">
+															Сформировать автоматически
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<!--begin::Input-->
+													<div class="form-input">
+														<input type="text" name="vendor_code_add" class="form-control mb-2" value="" />
+													</div>
+													<!--end::Input-->
+												</div>
+												<div class="col-4">
+													<!--begin::Label-->
+													<label class="required form-label">Штрихкод</label>
+													<!--end::Label-->
+													<!--end::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid mb-3">
+														<input class="form-check-input" type="checkbox" value="" id="bar_code_auto"/>
+														<label class="form-check-label" for="bar_code_auto">
+															Сформировать автоматически
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<!--begin::Input-->
+													<div class="form-input">
+														<input type="text" name="bar_code_add" class="form-control mb-2" value="" />
+													</div>
+													<!--end::Input-->
+												</div>
+											</div>
+											<!--end::Input group-->
+											<!--begin::Input group-->
+											<div class="mb-10 row fv-row">
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Цена</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_price" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Цена со скидкой</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_price_discount" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<div class="col-3">
+													<!--begin::Label-->
+													<label class="form-label">Цена Ozon Premium</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" name="product_price_premium" class="form-control mb-2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
 											</div>
 											<!--end::Input group-->
 										</div>
