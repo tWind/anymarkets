@@ -16,13 +16,55 @@ var KTAppEcommerceSaveProduct = function () {
         form,
         {
             fields: {
-                'product_name': {
-                    validators: {
-                        notEmpty: {
-                            message: 'Укажите название',
-                        }
+              'product_name': {
+                  validators: {
+                    notEmpty: {
+                      message: 'Укажите название',
                     }
-                },
+                  }
+              },
+              'brand': {
+                validators: {
+                  notEmpty: {
+                    message: 'Укажите бренд',
+                  }
+                }
+              },
+              'vendor_code': {
+                validators: {
+                  notEmpty: {
+                    message: 'Укажите артикул',
+                  }
+                }
+              },
+              'production_country': {
+                validators: {
+                  notEmpty: {
+                    message: 'Укажите страну производителя',
+                  }
+                }
+              },
+              'vendor_code_add': {
+                validators: {
+                  notEmpty: {
+                    message: 'Укажите артикул',
+                  }
+                }
+              },
+              'bar_code_add': {
+                validators: {
+                  notEmpty: {
+                    message: 'Укажите штрих-код',
+                  }
+                }
+              },
+              'production_country_1': {
+                validators: {
+                  notEmpty: {
+                    message: 'Укажите описание',
+                  }
+                }
+              },
             },
             plugins: {
                 trigger: new FormValidation.plugins.Trigger(),

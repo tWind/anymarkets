@@ -6,7 +6,8 @@ $font-family-sans-serif:            				Mulish, Helvetica, "sans-serif";
 $white:    											#ffffff;
 $gray-100: 										    if(isDarkMode(), #1b1b29, #EEEEF5);
 $gray-300: 										    if(isDarkMode(), #323248, #E4E6EF) !default;
-$gray-900: 										    if(isDarkMode(), #FFFFFF, #181C32) !default;
+$gray-500:                        #60607A;
+$gray-900: 										    if(isDarkMode(), #FFFFFF, #181C32,) !default; 
 $light-2: #F7F7FF;
 $black-1: #212121;
 
@@ -63,6 +64,8 @@ $form-check-input-width-sm:                         1.75rem;
 $form-check-input-height-sm:                         1.75rem;
 
 $input-bg:                                          $gray-100;
+$input-font-weight:                                 $font-weight-boldest;
+$input-color:                                       $gray-500;
 
 $form-label-font-size:                              1.15rem;
 $form-label-font-weight:                            700 !default;

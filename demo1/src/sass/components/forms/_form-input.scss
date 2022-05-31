@@ -15,6 +15,12 @@
     }
   }
 
+  &.no-icon {
+    &::before {
+      display: none;
+    }
+  }
+
   &::before, &::after {
     position: absolute;
     top: 12px;

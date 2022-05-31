@@ -3,36 +3,57 @@
 //
 
 .nav.nav-pills.nav-pills-custom {
+	.nav-item {
+		&:first-child {
+			.nav-link {
+				border-top-left-radius: 0.475rem;
+				border-bottom-left-radius: 0.475rem;
+			}
+		}
+		&:last-child {
+			.nav-link {
+				border-top-right-radius: 0.475rem;
+				border-bottom-right-radius: 0.475rem;
+			}
+		}
+	}
+
 	// States
 	.show > .nav-link,
-	.nav-link{		
-		border: 1px dashed $border-dashed-color;
-		border-radius: 12px;
+	.nav-link {		
+		border: 1px solid $secondary;
+		text-align: center;
+		border-radius: 0;
+		color: $gray-500;
+		font-weight: 700;
 		
-        .nav-icon {
-            img {
-                width: 30px;
-                transition: $transition-link;
+		.nav-icon {
+			img {
+				width: 30px;
+				transition: $transition-link;
 
-                &.default {
-                    display: inline-block;
-                }
+				&.default {
+					display: inline-block;
+				}
 
-                &.active {
-                    display: none;
-                }
-            }
-        }
+				&.active {
+					display: none;
+				}
+			}
+		}
 
-        &.active {	
-			background-color: transparent;		
-			border: 1px solid $border-dashed-color;
+		&.active {	
+			background-color: $secondary;
+			border: 1px solid $secondary;
 			transition-duration: 1ms;			
 			position: relative;
+			font-weight: 700;
+			color: $gray-500;
 
 			.nav-text {
-				color: $gray-800 !important;
+				color: $gray-500 !important;
 				transition: $transition-link;
+				font-weight: 700;
 			}
 			
 			.bullet-custom {
