@@ -2,6 +2,21 @@
 
 // Class definition
 var KTAppEcommerceSaveProduct = function () {
+  // Handle additional variants
+  const handleProductsVariants = () => {
+    // Select elements
+    const element = document.getElementById('product_var_nav');
+    const checkbox = document.getElementById('product_var_checkbox');
+
+    // Show/hide additional variants
+    checkbox.addEventListener('change', e => {
+        if (e.target.checked) {
+            element.classList.remove('d-none');
+        } else {
+            element.classList.add('d-none');
+        }
+    });
+  }
   // Submit form handler
   const handleSubmit = () => {
     // Define variables
@@ -132,6 +147,7 @@ var KTAppEcommerceSaveProduct = function () {
     return {
         init: function () {
           handleSubmit();
+          handleProductsVariants();
         }
     };
 }();
