@@ -17,6 +17,23 @@ var KTAppEcommerceSaveProduct = function () {
         }
     });
   }
+
+  // Handle additional fields
+  const handleAdditionalFields = () => {
+    // Select elements
+    const element = document.getElementById('product-additional-field');
+    const checkbox = document.getElementById('show_additional_fields');
+
+    // Show/hide additional variants
+    checkbox.addEventListener('change', e => {
+        if (e.target.checked) {
+            element.classList.remove('d-none');
+        } else {
+            element.classList.add('d-none');
+        }
+    });
+  }
+
   // Submit form handler
   const handleSubmit = () => {
     // Define variables
@@ -148,6 +165,7 @@ var KTAppEcommerceSaveProduct = function () {
         init: function () {
           handleSubmit();
           handleProductsVariants();
+          handleAdditionalFields();
         }
     };
 }();

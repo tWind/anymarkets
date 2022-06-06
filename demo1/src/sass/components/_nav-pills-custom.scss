@@ -65,4 +65,10 @@
 			display: none;			  	
 		}
 	}
+
+	.error > .nav-link {
+		border-color: #FFE2F1;
+		background-color: #FFE2F1;
+		color: #F1419D;
+	}
 }
