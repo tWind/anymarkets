@@ -153,9 +153,9 @@
 								<div class="header-nav d-flex flex-column" id="kt_header_nav">
 									<h3>Товары</h3>
 									<ol class="breadcrumb text-muted fs-6">
-										<li class="breadcrumb-item pe-3"><a href="#" class="pe-3">Главная</a></li>
-										<li class="breadcrumb-item pe-3"><a href="#" class="pe-3">Товары</a></li>
-										<li class="breadcrumb-item px-3 text-muted">Добавить товар</li>
+										<li class="breadcrumb-item pe-1"><a href="#" class="text-muted pe-1">Главная</a></li>
+										<li class="breadcrumb-item pe-1"><a href="#" class="text-muted pe-1">Товары</a></li>
+										<li class="breadcrumb-item px-1 text-muted">Добавить товар</li>
 									</ol>
 								</div>
 								<!--end::Navbar-->
@@ -205,8 +205,11 @@
 												<li class="nav-item me-0">
 														<a class="nav-link" data-bs-toggle="tab" href="#add_product_ozon">OZON</a>
 												</li>
-												<li class="nav-item">
+												<li class="nav-item me-0">
 														<a class="nav-link" data-bs-toggle="tab" href="#add_product_vk">Вконтакте</a>
+												</li>
+												<li class="nav-item error">
+													<a class="nav-link" data-bs-toggle="tab" href="#add_product_error">Ошибки (5)</a>
 												</li>
 											</ul>
 										</div>
@@ -762,7 +765,73 @@
 											<!--end::Tab pane-->
 											<!--begin::Tab pane-->
 											<div class="tab-pane fade" id="add_product_ozon" role="tabpanel">
-												Панель OZON
+												<div class="card-body border border-secondary rounded mx-10 mb-10 pb-3">
+													<div class="row mb-10">
+														<div class="col-4">
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Автомобильные товары">
+																<option></option>
+																<option value="0">Автоэлектроника</option>
+																<option value="1">Аксессуары</option>
+																<option value="2">Аксессуары для волос</option>
+																<option value="3">Аксессуары для малышей</option>
+																<option value="3">Автомобильные товары</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+														<div class="col-4">
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Автомобильные товары">
+																<option></option>
+																<option value="0" selected>Автобаферы</option>
+																<option value="1">Автоиконы</option>
+																<option value="2">Автокружки</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+														<div class="col-4">
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Автомобильные товары">
+																<option></option>
+																<option value="0" selected>Красные автокружки</option>
+																<option value="1">Синие автокружки</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+													</div>
+													<div class="row mb-10">
+														<div class="col-8">
+															<!--begin::Label-->
+															<label class="required form-label">Комплектация</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<div class="form-input">
+																<input type="text" name="product_complect" class="form-control mb-2" placeholder="Комплектация" value="" />
+															</div>
+															<!--end::Input-->
+														</div>
+													</div>
+													<div class="row mb-10">
+														<div class="col-4">
+															<div class="form-check form-switch form-check-custom form-check-solid me-10 mb-5">
+																<input class="form-check-input h-30px w-50px" type="checkbox" value="" id="show_additional_fields"/>
+																<label class="form-check-label" for="show_additional_fields">
+																	Показать необязательные поля
+																</label>
+															</div>
+															<div class="product-additional-field d-none" id="product-additional-field">
+																<!--begin::Label-->
+																<label class="form-label">Комплектация</label>
+																<!--end::Label-->
+																<!--begin::Input-->
+																<div class="form-input">
+																	<input type="text" name="product_complect" class="form-control mb-2" placeholder="Комплектация" value="" />
+																</div>
+																<!--end::Input-->
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 											<!--end::Tab pane-->
 											<!--begin::Tab pane-->
@@ -770,12 +839,50 @@
 												Панель VK
 											</div>
 											<!--end::Tab pane-->
+											<!--begin::Tab pane-->
+											<div class="tab-pane fade" id="add_product_error" role="tabpanel">
+												<!--begin::Card Body-->
+												<div class="card-body border border-secondary rounded mx-10 mb-10 pb-3">
+													<h3 class="fw-boldest mt-5 mb-10">Ошибки страницы</h3>
+													<div class="errors-table">
+														<table class="table table-row-dashed table-row-gray-300 gy-5">
+															<tr>
+																<td class="min-w-175px"><span class="badge badge-danger">Ошибки Ozon</span></td>
+																<td class="min-w-400px text-muted fw-boldest">Попытка создать товар из запрещенной категории</td>
+																<td class="min-w-175px text-end text-muted fw-boldest">10 Март 2022, 6:05</td>
+															</tr>
+															<tr>
+																<td class="min-w-175px"><span class="badge badge-danger">Ошибки Ozon</span></td>
+																<td class="min-w-400px text-muted fw-boldest">Попытка создать товар из запрещенной категории</td>
+																<td class="min-w-175px text-end text-muted fw-boldest">10 Март 2022, 6:05</td>
+															</tr>
+															<tr>
+																<td class="min-w-175px"><span class="badge badge-danger">Ошибки Ozon</span></td>
+																<td class="min-w-400px text-muted fw-boldest">Попытка создать товар из запрещенной категории</td>
+																<td class="min-w-175px text-end text-muted fw-boldest">10 Март 2022, 6:05</td>
+															</tr>
+															<tr>
+																<td class="min-w-175px"><span class="badge badge-danger">Ошибки VK</span></td>
+																<td class="min-w-400px text-muted fw-boldest">Произошла ошибка сервера... empty value for property: offer_id</td>
+																<td class="min-w-175px text-end text-muted fw-boldest">10 Март 2022, 6:05</td>
+															</tr>
+															<tr>
+																<td class="min-w-175px"><span class="badge badge-danger">Ошибки VK</span></td>
+																<td class="min-w-400px text-muted fw-boldest">Произошла ошибка сервера... empty value for property: offer_id</td>
+																<td class="min-w-175px text-end text-muted fw-boldest">10 Март 2022, 6:05</td>
+															</tr>
+														</table>
+													</div>
+												</div>
+												<!--end:Card body-->
+											</div>
+											<!--end::Tab pane-->
 										</div>
 										<!--begin::Tabs Content-->
 										<!--begin::Card footer-->
 										<div class="card-footer position-absolute d-flex w-100 align-items-center justify-content-center top-100 px-0">
 												<button class="btn btn-success me-3">Сохранить</button>
-												<button class="btn btn-secondary">Выгрузить в маркетплейсы</button>
+												<button class="btn btn-primary">Выгрузить в маркетплейсы</button>
 										</div>
 										<!--end::Card footer-->
 									</div>

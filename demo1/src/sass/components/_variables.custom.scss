@@ -16,6 +16,8 @@ $dark:          									$gray-900 !default;
 
 // Primary colors
 $primary:       									#F7F7FF;
+$primary-active:    							#afafbb;
+$primary-inverse:  								$gray-500;
 
 // Secondary colors
 $secondary:     									$gray-100;
@@ -34,7 +36,11 @@ $warning:       									#FFA800 !default;
 
 
 // Danger colors
-$danger:        									#F64E60 !default;
+$danger:        									  #FFE2F1;
+$danger-active:     								#EE2D41 !default; // Custom variable
+$danger-light:     									if(isDarkMode(), #3A2434, #FFE2E5) !default; // Custom variable
+$danger-inverse:   									#F1419D;
+
 
 // White colors
 $white:    											$white !default;
@@ -59,9 +65,14 @@ $theme-colors: (
 // Font family
 $font-weight-boldest:                               700 !default;
 
+// Components
+
+$component-active-color:                            $white;
+$component-active-bg:                               #5B5CE2;
+
 // Forms
 $form-check-input-width-sm:                         1.75rem;
-$form-check-input-height-sm:                         1.75rem;
+$form-check-input-height-sm:                        1.75rem;
 
 $input-bg:                                          $gray-100;
 $input-font-weight:                                 $font-weight-boldest;
