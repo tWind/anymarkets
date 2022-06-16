@@ -2,17 +2,34 @@
 $font-family-sans-serif:            				Mulish, Helvetica, "sans-serif";
 
 // Colors
-// Base colors
-$white:    											#ffffff;
+
+// Gray
+$gray-light:                      #F6F6FB;
 $gray-100: 										    if(isDarkMode(), #1b1b29, #EEEEF5);
+$gray-200: 										    if(isDarkMode(), #2B2B40, #EFF2F5) !default;
 $gray-300: 										    if(isDarkMode(), #323248, #E4E6EF) !default;
+$gray-400: 										    if(isDarkMode(), #474761, #B5B5C3) !default;
 $gray-500:                        #60607A;
+$gray-600: 										    if(isDarkMode(), #6D6D80, #7E8299) !default;
+$gray-700: 										    if(isDarkMode(), #92929F, #5E6278) !default;
+$gray-800: 										    if(isDarkMode(), #CDCDDE, #3F4254) !default;
+$text-muted:                                        $gray-500 !default;
 $gray-900: 										    if(isDarkMode(), #FFFFFF, #181C32,) !default; 
-$light-2: #F7F7FF;
-$black-1: #212121;
 
 // Dark colors
 $dark:          									$gray-900 !default;
+
+// White colors
+$white:    											#FFFFFF;
+
+// Blue colors
+$blue: #5B5CE2;
+
+// Base colors
+$white:    						                  					#ffffff;
+$light-2:                                         #F7F7FF;
+$black-1:                                         #212121;
+$text-muted:                                        $gray-500 !default;
 
 // Primary colors
 $primary:       									#F7F7FF;
@@ -20,7 +37,8 @@ $primary-active:    							#afafbb;
 $primary-inverse:  								$gray-500;
 
 // Secondary colors
-$secondary:     									$gray-100;
+$secondary:     									  $gray-100;
+$secondary-inverse:                 $gray-500;
 
 // Light colors
 $light:     									    if(isDarkMode(),$gray-300, $gray-100);
@@ -29,21 +47,21 @@ $light:     									    if(isDarkMode(),$gray-300, $gray-100);
 $success:       									#1BC58D;
 
 // Inco colors
-$info:         		 								#8950FC !default;
+$info:         		 								$blue;
 
 // Warning colors
-$warning:       									#FFA800 !default;
+$warning:       									#FF7F00;
+$warning-active:    							#FF7F00;
+$warning-light:    									if(isDarkMode(), #392F28, #FFEFE5) !default;
+$warning-inverse:  									$white !default; // Custom variable
 
 
 // Danger colors
-$danger:        									  #FFE2F1;
+$danger:        									  #F1419D;
 $danger-active:     								#EE2D41 !default; // Custom variable
 $danger-light:     									if(isDarkMode(), #3A2434, #FFE2E5) !default; // Custom variable
-$danger-inverse:   									#F1419D;
+$danger-inverse:   									#FFE2F1;
 
-
-// White colors
-$white:    											$white !default;
 
 // Theme colors
 $theme-colors: (
@@ -55,7 +73,7 @@ $theme-colors: (
   "info":       $info,
   "warning":    $warning,
   "danger":     $danger,
-  "dark":       $dark
+  "dark":       $dark,
 );
 
 // Typography
@@ -69,6 +87,7 @@ $font-weight-boldest:                               700 !default;
 
 $component-active-color:                            $white;
 $component-active-bg:                               #5B5CE2;
+$component-hover-color:                             #000;
 
 // Forms
 $form-check-input-width-sm:                         1.75rem;
@@ -78,9 +97,41 @@ $input-bg:                                          $gray-100;
 $input-font-weight:                                 $font-weight-boldest;
 $input-color:                                       $gray-500;
 
+$input-solid-bg:                                    $gray-light;
+$input-solid-color:                              	  $gray-500;
+
 $form-label-font-size:                              1.15rem;
 $form-label-font-weight:                            700 !default;
 
 // Buttons
 
 $btn-font-weight:                                   $font-weight-boldest;
+
+// Links
+//
+// Style anchor elements.
+$link-color:                                        $primary-inverse;
+
+// Text colors
+$theme-text-colors: (
+    "white":      $white,
+	  "primary":    $primary,
+    "secondary":  $secondary,
+    "light":      $light,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "danger":     $danger,
+    "dark":       $dark,
+    "muted":      $text-muted,
+    "gray-100":   $gray-100,
+    "gray-200":   $gray-200,
+    "gray-300":   $gray-300,
+    "gray-400":   $gray-400,
+    "gray-500":   $gray-500,
+    "gray-600":   $gray-600,
+    "gray-700":   $gray-700,
+    "gray-800":   $gray-800,
+    "gray-900":   $gray-900,
+    "link-active": $blue
+);

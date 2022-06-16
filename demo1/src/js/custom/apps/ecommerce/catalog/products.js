@@ -19,9 +19,16 @@ var KTAppEcommerceProducts = function () {
             ]
         });
 
+        $('[name="kt_ecommerce_products_table_length"]').select2({
+            minimumResultsForSearch: -1
+        });
+
         // Re-init functions on datatable re-draws
         datatable.on('draw', function () {
             handleDeleteRows();
+            $('[name="kt_ecommerce_products_table_length"]').select2({
+                minimumResultsForSearch: -1
+            });
         });
     }
 

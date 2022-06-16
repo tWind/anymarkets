@@ -1,0 +1,35 @@
+.alert-warning {
+  background-color: $warning-light;
+  color: $gray-500;
+  font-weight: 500;
+
+  a {
+    color: $warning;
+    font-weight: 700;
+  }
+
+  ul {
+    margin-bottom: 0;
+    list-style: none;
+    
+    li {
+      position: relative;
+      padding-left: 1.25rem;
+
+      &:not(:last-child) {
+        margin-bottom: .75rem;
+      }
+
+      &:before {
+        position: absolute;
+        left: 0; top: 50%;
+        content: "";
+        display: inline-block;
+        width: 8px;
+        height: 4px;
+        background-color: $warning;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

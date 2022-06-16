@@ -50,7 +50,7 @@
 	[data-kt-image-input-action="remove"] {
 		position: absolute;
 		left: 100%;
-		top: 100%;
+		top: 0;
 	}
 
 	[data-kt-image-input-action="cancel"] {
@@ -60,7 +60,7 @@
 	// Input Changed State
 	&.image-input-changed {
 		[data-kt-image-input-action="cancel"] {
-			display: flex;
+			display: none;
 		}
 
 		[data-kt-image-input-action="change"] {
@@ -68,7 +68,7 @@
 		}
 
 		[data-kt-image-input-action="remove"] {
-			display: none;
+			display: flex;
 		}
 	}
 

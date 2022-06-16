@@ -42,12 +42,17 @@
             height: $badge-size-lg;
         }
     }
+
+    &.badge-danger {
+        font-weight: 700;
+        text-transform: uppercase;
+    }
 }
 
 @each $name, $value in $theme-colors {
     .badge-#{$name} {
-        color: theme-inverse-color($name);
-        background-color: $value;
+        color: $value;
+        background-color: theme-inverse-color($name);
     }
 
     .badge-light-#{$name} {
