@@ -43,8 +43,9 @@
 		color: $black-1 !important;
 		background-color: transparent;
 		border: 0;
-		border-bottom: 1px solid $primary;
+		border-bottom: 1px solid $component-active-bg;
 		transition: $transition-link;
+		display: inline;
   	}
 
 	// 2x Line

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+	<!--begin::Head-->
+	<head>
+		<base href="">
+		<title>Anymarkets - Settings</title>
+		<meta charset="utf-8" />
+		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+		<!--begin::Fonts-->
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
+		<!--end::Fonts-->
+		<!--begin::Page Vendor Stylesheets(used by this page)-->
+		<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/plugins/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Page Vendor Stylesheets-->
+		<!--begin::Global Stylesheets Bundle(used by all pages)-->
+		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<!--end::Global Stylesheets Bundle-->
+	</head>
+	<!--end::Head-->
+	<!--begin::Body-->
+	<body class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;">
+		<!--begin::Main-->
+		<!--begin::Root-->
+		<div class="d-flex flex-column flex-root">
+			<!--begin::Page-->
+			<div class="page d-flex flex-row flex-column-fluid">
+				<!--begin::Aside-->
+				<div class="aside aside-dark aside-hoverable">
+					<!--begin::Brand-->
+					<div class="aside-logo flex-column-auto" id="kt_aside_logo">
+						<!--begin::Logo-->
+						<a href="/">
+							<img alt="Logo" src="assets/media/logos/logo.svg" class="h-25px logo" />
+						</a>
+						<!--end::Logo-->
+					</div>
+					<!--end::Brand-->
+					<!--begin::Aside menu-->
+					<div class="aside-menu flex-column-fluid">
+						<!--begin::Aside Menu-->
+						<div class="hover-scroll-overlay-y my-5 my-lg-5" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu" data-kt-scroll-offset="0">
+							<!--begin::Menu-->
+							<div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
+								<div data-kt-menu-trigger="click" class="menu-item here">
+									<a href="/" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: assets/media/icons/anymarket/options.svg-->
+											<span class="menu-svg-icon svg-icon-muted svg-icon-1">
+												<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g clip-path="url(#clip0_171_7535)">
+													<path d="M16.2354 10.3123L13.2354 15.5085L16.492 17.006C17.4304 17.4375 18.5431 17.0834 19.0596 16.1889L19.7367 15.016C20.2532 14.1215 20.0035 12.9808 19.1605 12.3839L16.2354 10.3123Z" fill="#E9E9FF"/>
+													<path d="M3.79517 10.3123L6.79517 15.5085L3.53856 17.006C2.6001 17.4375 1.48741 17.0834 0.97095 16.1889L0.293824 15.016C-0.222635 14.1215 0.027055 12.9808 0.87 12.3839L3.79517 10.3123Z" fill="#E9E9FF"/>
+													<path d="M7 5.31232H13L12.6801 2.11332C12.5779 1.09091 11.7175 0.312325 10.69 0.312325H9.30998C8.28247 0.312325 7.42214 1.09091 7.3199 2.11332L7 5.31232Z" fill="#E9E9FF"/>
+													<path d="M7 15.3123H13L12.6801 18.5113C12.5779 19.5337 11.7175 20.3123 10.69 20.3123H9.30998C8.28247 20.3123 7.42214 19.5337 7.3199 18.5113L7 15.3123Z" fill="#E9E9FF"/>
+													<path d="M6.77283 5.08856L3.77283 10.2847L0.868913 8.22627C0.0265109 7.62913 -0.222827 6.48886 0.293462 5.59462L0.971401 4.42039C1.48769 3.52615 2.59986 3.17195 3.5382 3.60292L6.77283 5.08856Z" fill="#E9E9FF"/>
+													<path d="M13.2578 5.08856L16.2578 10.2847L19.1617 8.22627C20.0041 7.62913 20.2535 6.48886 19.7372 5.59462L19.0592 4.42039C18.5429 3.52615 17.4308 3.17195 16.4924 3.60292L13.2578 5.08856Z" fill="#E9E9FF"/>
+													<circle cx="10" cy="10.3123" r="7" fill="#E9E9FF"/>
+													<circle cx="10" cy="10.3123" r="4" fill="#9999EE"/>
+													</g>
+													<defs>
+													<clipPath id="clip0_171_7535">
+													<rect width="20" height="20" fill="white" transform="translate(0 0.312325)"/>
+													</clipPath>
+													</defs>
+												</svg>													
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+									</a>
+								</div>
+
+								<div data-kt-menu-trigger="click" class="menu-item">
+									<a href="/" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: assets/media/icons/anymarket/profile.svg-->
+											<span class="smenu-svg-icon svg-icon-muted svg-icon-1">
+												<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g clip-path="url(#clip0_171_7551)">
+													<circle cx="10" cy="7.31232" r="3" fill="#E9E9FF"/>
+													<path d="M5 17.3123C5 14.5509 7.23858 12.3123 10 12.3123C12.7614 12.3123 15 14.5509 15 17.3123V18.1456C15 18.79 14.4777 19.3123 13.8333 19.3123H6.16667C5.52233 19.3123 5 18.79 5 18.1456V17.3123Z" fill="#E9E9FF"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M10 20.3123C15.5228 20.3123 20 15.8352 20 10.3123C20 4.78947 15.5228 0.312317 10 0.312317C4.47715 0.312317 0 4.78947 0 10.3123C0 15.8352 4.47715 20.3123 10 20.3123ZM10 18.3123C14.4183 18.3123 18 14.7306 18 10.3123C18 5.89404 14.4183 2.31232 10 2.31232C5.58172 2.31232 2 5.89404 2 10.3123C2 14.7306 5.58172 18.3123 10 18.3123Z" fill="#9999EE"/>
+													</g>
+													<defs>
+													<clipPath id="clip0_171_7551">
+													<rect width="20" height="20" fill="white" transform="translate(0 0.312317)"/>
+													</clipPath>
+													</defs>
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+									</a>
+								</div>
+
+								<div data-kt-menu-trigger="click" class="menu-item">
+									<a href="/" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: assets/media/icons/anymarket/basket.svg-->
+											<span class="menu-svg-icon svg-icon-muted svg-icon-1">
+												<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<path d="M10 3.19461L5.06295 8.9075C4.65046 9.38481 3.9148 9.4493 3.41981 9.05154C2.92482 8.65378 2.85795 7.9444 3.27044 7.46709L9.10375 0.717108C9.57017 0.177386 10.4298 0.177386 10.8963 0.717108L16.7296 7.46709C17.1421 7.9444 17.0752 8.65378 16.5802 9.05154C16.0852 9.4493 15.3495 9.38481 14.9371 8.9075L10 3.19461Z" fill="#9999EE"/>
+													<path d="M0.0910756 9.71601C-0.217015 9.05499 0.294302 8.31232 1.05749 8.31232H18.9425C19.7057 8.31232 20.217 9.05493 19.909 9.71594L15.8049 18.5232C15.2981 19.6106 14.161 20.3123 12.9055 20.3123H7.09532C5.83992 20.3123 4.70288 19.6107 4.19608 18.5234L0.0910756 9.71601Z" fill="#E9E9FF"/>
+													<path fill-rule="evenodd" clip-rule="evenodd" d="M10 17.3123C11.6569 17.3123 13 16.193 13 14.8123C13 13.4316 11.6569 12.3123 10 12.3123C8.34315 12.3123 7 13.4316 7 14.8123C7 16.193 8.34315 17.3123 10 17.3123Z" fill="#9999EE"/>
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+									</a>
+								</div>
+
+								<div data-kt-menu-trigger="click" class="menu-item">
+									<a href="/" class="menu-link">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: assets/media/icons/anymarket/payment.svg-->
+											<span class="menu-svg-icon svg-icon-1">
+												<svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<g clip-path="url(#clip0_171_7571)">
+													<rect x="-0.838257" y="11.6982" width="17.6242" height="13" rx="2" transform="rotate(-43.7913 -0.838257 11.6982)" fill="#E9E9FF"/>
+													<rect x="1.60522" y="14.2471" width="17.6242" height="2.78503" transform="rotate(-43.7913 1.60522 14.2471)" fill="#9999EE"/>
+													</g>
+													<defs>
+													<clipPath id="clip0_171_7571">
+													<rect width="20" height="20" fill="white" transform="translate(0 0.312317)"/>
+													</clipPath>
+													</defs>
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+									</a>
+								</div>
+							</div>
+							<!--end::Menu-->
+						</div>
+						<!--end::Aside Menu-->
+					</div>
+					<!--end::Aside menu-->
+				</div>
+				<!--end::Aside-->
+
+				<!--begin::Wrapper-->
+				<div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+					<!--begin::Header-->
+					<div id="kt_header" class="header align-items-stretch">
+						<!--begin::Container-->
+						<div class="container-fluid d-flex align-items-stretch justify-content-between">
+						
+							<!--begin::Wrapper-->
+							<div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+								<!--begin::Navbar-->
+								<div class="header-nav d-flex flex-column" id="kt_header_nav">
+									<h3>Товары</h3>
+									<ol class="breadcrumb text-muted fs-6">
+										<li class="breadcrumb-item pe-1"><a href="#" class="text-muted pe-1">Главная</a></li>
+										<li class="breadcrumb-item px-1 text-muted">Настройки</li>
+									</ol>
+								</div>
+								<!--end::Navbar-->
+								<!--begin::Toolbar wrapper-->
+								<div class="d-flex align-items-stretch flex-shrink-0">
+									<!--begin::Logout-->
+									<div class="header-logout d-flex align-items-center ms-1 ms-lg-3">
+										<!--begin::Drawer toggle-->
+										<div class="btn btn-icon-gray-300 btn-bg-light btn-text-gray-900 fs-6 fw-boldest" id="kt_activities_toggle">
+											<!--begin::Svg Icon | path: icons/anymarket/logout.svg-->
+											<span class="svg-icon svg-icon-2">
+												<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+													<rect x="6" width="14" height="20" rx="2" fill="#E3E3EA"/>
+													<path d="M14 10L10 6M14 10L10 14M14 10H1" stroke="#A4A4BA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+											Выйти
+										</div>
+										<!--end::Drawer toggle-->
+									</div>
+									<!--end::Logout-->
+								</div>
+								<!--end::Toolbar wrapper-->
+							</div>
+							<!--end::Wrapper-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Header-->
+
+					<!--begin::Content-->
+					<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+						<!--begin::Post-->
+						<div class="post d-flex flex-column-fluid" id="kt_post">
+							<!--begin::Container-->
+							<div id="kt_content_container" class="container-xxl bg-white rounded mx-10">
+								<ul class="nav nav-tabs nav-pills nav-pills-custom border-0 my-10">
+									<li class="nav-item me-0">
+											<a class="nav-link" data-bs-toggle="tab" href="#settings_main">Общее</a>
+									</li>
+									<li class="nav-item me-0">
+											<a class="nav-link" data-bs-toggle="tab" href="#settings_floors">Площадки</a>
+									</li>
+									<li class="nav-item">
+											<a class="nav-link active" data-bs-toggle="tab" href="#settings_brands">Бренды</a>
+									</li>
+								</ul>
+								<!--begin::Form-->
+								<form id="kt_ecommerce_settings_form" class="form">
+									<!--begin::Tabs Content-->
+									<div class="tab-content" id="settingsTabsContent">
+										<!--begin::Tab pane-->
+										<div class="tab-pane fade" id="settings_main" role="tabpanel">
+											<!--begin::Alert-->
+											<div class="alert alert-warning border-warning border-dashed mb-10">
+												<!--begin::Wrapper-->
+												<div class="d-flex align-items-center">
+													<!--begin::Icon-->
+													<span class="svg-icon svg-icon-2hx svg-icon-warning me-3">
+														<!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen044.svg-->
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black"/>
+															<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black"/>
+															<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black"/>
+														</svg>
+														<!--end::Svg Icon-->
+													</span>
+													<!--end::Icon-->
+													<!--begin::Content-->
+													<span class="fw-bolder">Вы используете демо-доступ. До окончания демо-доступа осталось 22 часа.</span>
+													<!--end::Content-->
+												</div>
+												<!--end::Wrapper-->
+											</div>
+											<!--end::Alert-->
+											<!--begin:Card-->
+											<div class="card card-flush border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header pt-12">
+													<div class="row w-100">
+														<div class="col-7 border-bottom border-bottom-dashed">
+															<h5 class="fw-boldest my-10">Тарифный план</h5>
+														</div>
+													</div>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body">
+													<div class="row mb-10">
+														<div class="col-7 d-flex justify-content-between align-items-center border-bottom border-bottom-dashed pb-10">
+															<h3 class="fw-boldest my-0">Особые условия</h3>
+															<div class="btn btn-secondary">Изменить тариф</div>
+														</div>
+													</div>
+													<div class="row mb-10">
+														<div class="col-7 border-bottom border-bottom-dashed pb-5">
+															<table class="table">
+																<tr>
+																	<td class="fw-boldest text-gray-500 min-w-125px">Осталось:</td>
+																	<td class="fw-bold">29 дней</td>
+																</tr>
+																<tr>
+																	<td class="fw-boldest text-gray-500 min-w-125px">Всего:</td>
+																	<td class="fw-bold">10 000 товаров</td>
+																<tr>
+																	<td class="fw-boldest text-gray-500 min-w-125px">Товаров у вас:</td>
+																	<td class="fw-bold">1040</td>
+																</tr>
+															</table>
+														</div>
+													</div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<!--begin:Card-->
+											<div class="card card-flush  border border-secondary rounded mb-5 mb-xl-8">
+												<div class="card-body">
+													<div class="row mb-10">
+														<div class="col-4">
+															<!--begin::Input group-->
+															<!--begin::Label-->
+															<label class="form-label">Имя</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" name="settings_username" class="form-control form-control-solid mb-2" placeholder="Имя" value="" />
+															<!--end::Input-->
+															<!--end::Input group-->
+															</div>
+														<div class="col-4">
+															<!--begin::Input group-->
+															<!--begin::Label-->
+															<label class="form-label">Компания</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" name="settings_company" class="form-control form-control-solid mb-2" placeholder="Компания" value="" />
+															<!--end::Input-->
+															<!--end::Input group-->
+														</div>
+													</div>
+													<div class="row mb-10">
+														<div class="col-4">
+															<!--begin::Input group-->
+															<!--begin::Label-->
+															<label class="form-label">Email</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" id="settings_email" name="settings_email" class="form-control form-control-solid mb-2" placeholder="Email" value="" />
+															<!--end::Input-->
+															<!--end::Input group-->
+															</div>
+														<div class="col-4">
+															<!--begin::Input group-->
+															<!--begin::Label-->
+															<label class="form-label">Телефон</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" id="settings_phone" name="settings_phone" class="form-control form-control-solid mb-2" placeholder="Телефон" value="" />
+															<!--end::Input-->
+															<!--end::Input group-->
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--end:Card-->
+										</div>
+										<!--end::Tab pane-->
+										<!--begin::Tab pane-->
+										<div class="tab-pane fade" id="settings_floors" role="tabpanel">
+											<!--begin::Alert-->
+											<div class="alert alert-warning border-warning border-dashed mb-10">
+												<!--begin::Wrapper-->
+												<div class="d-flex align-items-center">
+													<!--begin::Content-->
+													<ul>
+														<li><span>Отметьте все площадки, в которые вы планируете выгружать товары.</span></li>
+														<li><span>После выбора маркетплейса вам будет предложено ввести API-ключ и проверить его работоспособность.</span></li>
+														<li><span>Если у вас возникнут сложности - читайте наш <a href="#">wiki-раздел</a>.</span></li>
+													</ul>
+													<!--end::Content-->
+												</div>
+												<!--end::Wrapper-->
+											</div>
+											<!--end::Alert-->
+											<!--begin:Card-->
+											<div class="card card-flush  border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header align-items-center pt-12 mb-10">
+													<!--begin::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" value="" id="settings_markets_ozon_check" checked />
+														<label class="form-check-label" for="settings_markets_ozon_check">
+															OZON
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<span class="badge badge-light-dark">Подключено</span>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body" id="settings_markets_ozon">
+													<div class="row mb-10">
+														<div class="col-6 position-relative me-10">
+															<!--begin::Label-->
+															<label class="form-label required">
+																<span>Ваш Client ID</span>
+															</label>
+															<!--end::Label-->
+															<!--begin:Link-->
+															<div class="form-link position-absolute top-0 end-0 pe-5">
+																<a class="fw-bolder text-info" href="#">Где взять Client-Id OZON?</a>
+															</div>
+															<!--end:LInk-->
+															<!--begin::Input-->
+															<input type="text" name="settings_client_id" class="form-control form-control-solid mb-2" placeholder="" value="" />
+															<!--end::Input-->
+														</div>
+														<div class="col-5 d-flex align-items-end pb-5">
+															<span class="text-gray-400">Пример: 30288</span>
+														</div>
+													</div>
+													<div class="row mb-10">
+														<div class="col-6 position-relative me-10">
+															<!--begin::Label-->
+															<label class="form-label required">
+																<span>API - ключ</span>
+															</label>
+															<!--end::Label-->
+															<!--begin:Link-->
+															<div class="form-link position-absolute top-0 end-0 pe-5">
+																<a class="fw-bolder text-info" href="#">Где взять API - ключ?</a>
+															</div>
+															<!--end:LInk-->
+															<!--begin::Input-->
+															<input type="text" name="product_height" class="form-control form-control-solid mb-2" placeholder="" value="" />
+															<!--end::Input-->
+														</div>
+														<div class="col-5 d-flex align-items-end pb-5">
+															<span class="text-gray-400">Пример: 312346f78-0ce1-123f4-bae1-d1b23a4a56cb7</span>
+														</div>
+													</div>
+													<div class="row mb-10">
+														<div class="col-6 me-10">
+															<span class="btn btn-primary">Проверить подключение</span>
+														</div>
+														<div class="col-5 d-flex align-items-center">
+															<span class="svg-icon">
+																<!--begin::Svg Icon | path: assets/media/icons/duotune/abstract/abs012.svg-->
+																<span class="svg-icon svg-icon-danger me-3">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" class="w-20px h-20px" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.3" d="M6.7 19.4L5.3 18C4.9 17.6 4.9 17 5.3 16.6L16.6 5.3C17 4.9 17.6 4.9 18 5.3L19.4 6.7C19.8 7.1 19.8 7.7 19.4 8.1L8.1 19.4C7.8 19.8 7.1 19.8 6.7 19.4Z" fill="black"/>
+																		<path d="M19.5 18L18.1 19.4C17.7 19.8 17.1 19.8 16.7 19.4L5.40001 8.1C5.00001 7.7 5.00001 7.1 5.40001 6.7L6.80001 5.3C7.20001 4.9 7.80001 4.9 8.20001 5.3L19.5 16.6C19.9 16.9 19.9 17.6 19.5 18Z" fill="black"/>
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+															</span>
+															<span class="text-gray-500 fw-bolder">Некорректный Client ID</span>
+														</div>
+													</div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<!--begin:Card-->
+											<div class="card card-flush  border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header align-items-center pt-12 mb-10">
+													<!--begin::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" value="" id="settings_markets_wb_check" />
+														<label class="form-check-label" for="settings_markets_wb_check">
+															Wildberries
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<span class="badge badge-light-dark">Вы убираете Wildberries. При сохранении настроек он будет отключен</span>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body d-none" id="settings_markets_wb">
+													<div class="row mb-10">
+														<div class="col-5 position-relative me-10">
+															<!--begin::Label-->
+															<label class="form-label">
+																<span>Магазин выбран</span>
+															</label>
+															<!--end::Label-->
+															<!--begin:Link-->
+															<div class="form-link position-absolute top-0 end-0 pe-5">
+																<a class="fw-bolder text-info" href="#">Где взять Client-Id OZON?</a>
+															</div>
+															<!--end:LInk-->
+															<!--begin::Select2-->
+															<select class="form-select form-select-solid mb-2" name="market-adress" data-control="select2" data-hide-search="true" data-placeholder="Выберите магазин">
+																<option></option>
+																<option value="0">Пролетарская</option>
+																<option value="1">Молодежная</option>
+																<option value="2">Трехсвятская</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+													</div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<!--begin:Card-->
+											<div class="card card-flush  border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header align-items-center pt-12 mb-10">
+													<!--begin::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" value="" id="settings_markets_ya_check" />
+														<label class="form-check-label" for="settings_markets_ya_check">
+															Яндекс.Маркет
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<span class="badge badge-light-dark">Подключено</span>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body d-none" id="settings_markets_ya">
+													<label class="form-label required">Для получения OAuth токена нажмите Подключить Яндекс.Маркет</label>
+													<div class="py-5"><button class="btn btn-secondary">Подключить Яндекс.Маркет</button></div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<!--begin:Card-->
+											<div class="card card-flush  border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header align-items-center pt-12 mb-10">
+													<!--begin::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" value="" id="settings_markets_vk_check" />
+														<label class="form-check-label" for="settings_markets_vk_check">
+															Вконтакте
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<span class="badge badge-light-dark">Подключено</span>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body d-none" id="settings_markets_vk">
+													Вконтакте
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+										</div>
+										<!--end::Tab pane-->
+										<!--begin::Tab pane-->
+										<div class="tab-pane fade show active" id="settings_brands" role="tabpanel">
+											<!--begin::Alert-->
+											<div class="alert alert-warning border-warning border-dashed mb-10">
+												<!--begin::Wrapper-->
+												<div class="d-flex align-items-center">
+													<!--begin::Icon-->
+													<span class="me-3">
+														<!--begin::Svg Icon | path: assets/media/icons/duotune/general/gen044.svg-->
+														<svg width="30" height="31" viewBox="0 0 30 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+															<g clip-path="url(#clip0_171_4582)">
+															<path fill-rule="evenodd" clip-rule="evenodd" d="M15 30.5C23.2843 30.5 30 23.7843 30 15.5C30 7.21573 23.2843 0.5 15 0.5C6.71573 0.5 0 7.21573 0 15.5C0 23.7843 6.71573 30.5 15 30.5Z" fill="#FFD4BB"/>
+															<rect x="12" y="6.5" width="6" height="10" rx="2" fill="#FF8237"/>
+															<rect x="12" y="18.5" width="6" height="6" rx="2" fill="#FF8237"/>
+															</g>
+															<defs>
+															<clipPath id="clip0_171_4582">
+															<rect width="30" height="30" fill="white" transform="translate(0 0.5)"/>
+															</clipPath>
+															</defs>
+														</svg>
+														<!--end::Svg Icon-->
+													</span>
+													<!--end::Icon-->
+													<!--begin::Content-->
+													<span class="fw-bolder">Пожалуйста, добавляйте только название добавленного вами в личном кабинете маркетплейсов вашего бренда. <br>
+														В противном случае, система не сможет опубликовать его от имени вашего магазина.
+													</span>
+													<!--end::Content-->
+												</div>
+												<!--end::Wrapper-->
+											</div>
+											<!--end::Alert-->
+											<!--begin:Card-->
+											<div class="card card-flush border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Body-->
+												<div class="card-body">
+													<div class="row mb-10">
+														<div class="col-5">
+															<!--begin::Label-->
+															<label class="form-label required">Название вашего бренда</label>
+															<!--end::Label-->
+															<!--begin::Input-->
+															<input type="text" name="settings_brand_name" class="form-control form-control-solid mb-2" placeholder="Название бренда" value="" />
+															<!--end::Input-->
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-5">
+															<button class="btn btn-success">Добавить</button>
+														</div>
+													</div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<div class="row mb-10">
+												<div class="col-12">
+													<!--begin::Table container-->
+													<div class="table-responsive border-bottom">
+														<!--begin::Table-->
+														<table class="table align-middle table-row-dashed fs-6 gy-5 mb-0" id="am-settings-brands-table">
+															<!--begin::Table head-->
+															<thead>
+																<!--begin::Table row-->
+																<tr class="text-start text-gray-400 fw-boldest fs-7 gs-0 align-middle">
+																	<th class="text-uppercase w-10px pe-2 py-10">id</th>
+																	<th class="w-300px text-uppercase py-10">Бренд</th>
+																	<th class="w-200px text-uppercase min-w-100px py-10">Создан</th>
+																	<th class="w-200px text-uppercase w-125px py-10">Товаров</th>
+																	<th></th>
+																</tr>
+																<!--end::Table row-->
+															</thead>
+															<tbody class="fw-bold text-gray-900">
+																<!--begin::Table row-->
+																<tr>
+																	<td><span class="fw-boldest">1</span></td>
+																	<td><span class="fw-boldest" data-am-settings-table="product_name">Стиль</span></td>
+																	<td><span class="fw-bolder">Создан</span></td>
+																	<td><span class="fw-bolder">Товаров</span></td>
+																	<td class="text-end">
+																		<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-am-settings-table="delete_row">
+																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+																			<span>
+																				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																					<path d="M2 6V14.5C2 15.3284 2.67157 16 3.5 16H12.5C13.3284 16 14 15.3284 14 14.5V6H2Z" fill="#5B5CE2"/>
+																					<path fill-rule="evenodd" clip-rule="evenodd" d="M11 2V1C11 0.447715 10.5523 0 10 0H6C5.44772 0 5 0.447715 5 1V2H0.5C0.223858 2 0 2.22386 0 2.5V3.5C0 3.77614 0.223858 4 0.5 4H15.5C15.7761 4 16 3.77614 16 3.5V2.5C16 2.22386 15.7761 2 15.5 2H11Z" fill="#9999EE"/>
+																				</svg>
+																			</span>
+																			<!--end::Svg Icon-->
+																		</a>
+																	</td>
+																	<!--end::Action=-->
+																</tr>
+																<!--end::Table row-->
+																<!--begin::Table row-->
+																<tr>
+																	<td><span class="fw-boldest">2</span></td>
+																	<td><span class="fw-boldest" data-am-settings-table="product_name">Элеганс</span></td>
+																	<td><span class="fw-bolder">4 ошибки</span></td>
+																	<td><span class="fw-bolder">4 ошибки</span></td>
+																	<td class="text-end">
+																		<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-am-settings-table="delete_row">
+																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+																			<span>
+																				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																					<path d="M2 6V14.5C2 15.3284 2.67157 16 3.5 16H12.5C13.3284 16 14 15.3284 14 14.5V6H2Z" fill="#5B5CE2"/>
+																					<path fill-rule="evenodd" clip-rule="evenodd" d="M11 2V1C11 0.447715 10.5523 0 10 0H6C5.44772 0 5 0.447715 5 1V2H0.5C0.223858 2 0 2.22386 0 2.5V3.5C0 3.77614 0.223858 4 0.5 4H15.5C15.7761 4 16 3.77614 16 3.5V2.5C16 2.22386 15.7761 2 15.5 2H11Z" fill="#9999EE"/>
+																				</svg>
+																			</span>
+																			<!--end::Svg Icon-->
+																		</a>
+																	</td>
+																	<!--end::Action=-->
+																</tr>
+																<!--end::Table row-->
+																<!--begin::Table row-->
+																<tr>
+																	<td><span class="fw-boldest">3</span></td>
+																	<td><span class="fw-boldest" data-am-settings-table="product_name">Модерн</span></td>
+																	<td><span class="fw-bolder">Загружен</span></td>
+																	<td><span class="fw-bolder">Загружен</span></td>
+																	<td class="text-end">
+																		<a href="#" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm" data-am-settings-table="delete_row">
+																			<!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
+																			<span>
+																				<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																					<path d="M2 6V14.5C2 15.3284 2.67157 16 3.5 16H12.5C13.3284 16 14 15.3284 14 14.5V6H2Z" fill="#5B5CE2"/>
+																					<path fill-rule="evenodd" clip-rule="evenodd" d="M11 2V1C11 0.447715 10.5523 0 10 0H6C5.44772 0 5 0.447715 5 1V2H0.5C0.223858 2 0 2.22386 0 2.5V3.5C0 3.77614 0.223858 4 0.5 4H15.5C15.7761 4 16 3.77614 16 3.5V2.5C16 2.22386 15.7761 2 15.5 2H11Z" fill="#9999EE"/>
+																				</svg>
+																			</span>
+																			<!--end::Svg Icon-->
+																		</a>
+																	</td>
+																	<!--end::Action=-->
+																</tr>
+																<!--end::Table row-->
+															</tbody>
+														</table>
+														<!--end::Table-->
+													</div>
+													<!--end::Table container-->
+												</div>
+											</div>
+										</div>
+										<!--end::Tab pane-->
+									</div>
+									<!--end::Tabs Content-->
+									<!--begin:Form submit-->
+									<div class="d-flex mb-15">
+										<div class="btn btn-success">Сохранить настройки</div>
+									</div>
+									<!--end:Form submit-->
+								</form>
+								<!--end::Form-->
+							</div>
+							<!--end::Container-->
+						</div>
+						<!--end::Post-->
+					</div>
+					<!--end::Content-->
+
+					<!--begin::Footer-->
+					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+						<!--begin::Container-->
+						<div class="container-fluid d-flex flex-column flex-md-row align-items-center justify-content-end">
+							<!--begin::Copyright-->
+							<div class="text-dark order-2 order-md-1">
+								<span class="text-muted fw-bold me-1">©</span>
+								<a href="/" target="_blank" class="text-gray-800 text-hover-primary">Anymarket</a>
+								<span class="text-muted fw-bold me-1">2022</span>
+							</div>
+							<!--end::Copyright-->
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Footer-->
+				</div>
+				<!--end::Wrapper-->
+			</div>
+			<!--end::Page-->
+		</div>
+		<!--end::Root-->
+		<!--end::Main-->
+	
+		<!--begin::Javascript-->
+		<script>var hostUrl = "assets/";</script>
+		<!--begin::Global Javascript Bundle(used by all pages)-->
+		<script src="assets/plugins/global/plugins.bundle.js"></script>
+		<script src="assets/js/scripts.bundle.js"></script>
+		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Vendors Javascript(used by this page)-->
+		<script src="assets/plugins/custom/datatables/datatables.bundle.js"></script>
+		<script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+		<!--end::Page Vendors Javascript-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/custom/settings-test.js"></script>
+		<script src="assets/js/widgets.bundle.js"></script>
+		<script src="assets/js/custom/widgets.js"></script>
+		<script src="assets/js/custom/apps/chat/chat.js"></script>
+		<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
+		<script src="assets/js/custom/utilities/modals/create-app.js"></script>
+		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+		<!--end::Page Custom Javascript-->
+		<!--end::Javascript-->
+	</body>
+	<!--end::Body-->
+</html>
