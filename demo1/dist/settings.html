@@ -194,13 +194,13 @@
 							<div id="kt_content_container" class="container-xxl bg-white rounded mx-10">
 								<ul class="nav nav-tabs nav-pills nav-pills-custom border-0 my-10">
 									<li class="nav-item me-0">
-											<a class="nav-link" data-bs-toggle="tab" href="#settings_main">Общее</a>
+											<a class="nav-link active" data-bs-toggle="tab" href="#settings_main">Общее</a>
 									</li>
 									<li class="nav-item me-0">
 											<a class="nav-link" data-bs-toggle="tab" href="#settings_floors">Площадки</a>
 									</li>
 									<li class="nav-item">
-											<a class="nav-link active" data-bs-toggle="tab" href="#settings_brands">Бренды</a>
+											<a class="nav-link" data-bs-toggle="tab" href="#settings_brands">Бренды</a>
 									</li>
 								</ul>
 								<!--begin::Form-->
@@ -208,7 +208,7 @@
 									<!--begin::Tabs Content-->
 									<div class="tab-content" id="settingsTabsContent">
 										<!--begin::Tab pane-->
-										<div class="tab-pane fade" id="settings_main" role="tabpanel">
+										<div class="tab-pane fade show active" id="settings_main" role="tabpanel">
 											<!--begin::Alert-->
 											<div class="alert alert-warning border-warning border-dashed mb-10">
 												<!--begin::Wrapper-->
@@ -237,34 +237,99 @@
 												<div class="card-header pt-12">
 													<div class="row w-100">
 														<div class="col-7 border-bottom border-bottom-dashed">
-															<h5 class="fw-boldest my-10">Тарифный план</h5>
+															<h5 class="fw-boldest my-3">Тарифный план</h5>
+															<div id="tariffSelect" class="d-none">
+																<!--begin::Select2-->
+																<select class="form-select form-select-solid w-100" name="tariff-select" data-control="select2" data-hide-search="true" data-placeholder="Выберите тарифный план">
+																	<option></option>
+																	<option value="0">Полный доступ / 6 месяцев (скидка 20%)</option>
+																</select>
+																<!--end::Select2-->
+															</div>
 														</div>
 													</div>
 												</div>
 												<!--end::Card Header-->
 												<!--begin::Card Body-->
 												<div class="card-body">
-													<div class="row mb-10">
+													<div class="row mb-10" id="changeTariffBtnRow">
 														<div class="col-7 d-flex justify-content-between align-items-center border-bottom border-bottom-dashed pb-10">
 															<h3 class="fw-boldest my-0">Особые условия</h3>
-															<div class="btn btn-secondary">Изменить тариф</div>
+															<div class="btn btn-secondary" id="btn-change-tariff">Изменить тариф</div>
 														</div>
 													</div>
-													<div class="row mb-10">
-														<div class="col-7 border-bottom border-bottom-dashed pb-5">
+													<div class="row" id="tariffDisplayRow">
+														<div class="col-7">
 															<table class="table">
 																<tr>
-																	<td class="fw-boldest text-gray-500 min-w-125px">Осталось:</td>
+																	<td class="fw-boldest text-gray-500 w-150px">Осталось:</td>
 																	<td class="fw-bold">29 дней</td>
 																</tr>
 																<tr>
-																	<td class="fw-boldest text-gray-500 min-w-125px">Всего:</td>
+																	<td class="fw-boldest text-gray-500">Всего:</td>
 																	<td class="fw-bold">10 000 товаров</td>
 																<tr>
-																	<td class="fw-boldest text-gray-500 min-w-125px">Товаров у вас:</td>
+																	<td class="fw-boldest text-gray-500">Товаров у вас:</td>
 																	<td class="fw-bold">1040</td>
 																</tr>
 															</table>
+														</div>
+													</div>
+													<div class="row d-none" id="tariffRow">
+														<div class="col-7">
+															<table class="table">
+																<tr>
+																	<td class="fw-boldest text-gray-500 w-150px">Стоимость:</td>
+																	<td class="fw-bold"><s>890 рублей</s> 590 рублей в месяц <span class="badge badge-warning fw-boldest ms-3">СКИДКА 20%</span></td>
+																</tr>
+																<tr>
+																	<td class="fw-boldest text-gray-500">Доступно:</td>
+																	<td class="fw-bold">181 дней</td>
+																<tr>
+																<tr>
+																	<td class="fw-boldest text-gray-500">Всего:</td>
+																	<td class="fw-bold">10 000 товаров</td>
+																<tr>
+																	<td class="fw-boldest text-gray-500">Товаров у вас:</td>
+																	<td class="fw-bold">1040</td>
+																</tr>
+															</table>
+															<div class="btn btn-success">Оплатить</div>
+														</div>
+													</div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<!--begin:Card-->
+											<div class="card card-flush border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header pt-12">
+													<div class="row w-100">
+														<div class="col-7 border-bottom border-bottom-dashed">
+															<h5 class="fw-boldest my-3">Тарифный план</h5>
+															<div>
+																<!--begin::Select2-->
+																<select class="form-select form-select-solid w-100" name="tariff-select" data-control="select2" data-hide-search="true" data-placeholder="Выберите тарифный план">
+																	<option></option>
+																	<option value="0">Полный доступ / 6 месяцев (скидка 20%)</option>
+																	<option value="1">Больше 10 000 товаров</option>
+																</select>
+																<!--end::Select2-->
+															</div>
+														</div>
+													</div>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body">
+													<div class="row">
+														<div class="col-7">
+															<div class="fw-boldest mb-3">Введите примерное количество товаров, которое вас интересует, мы подберем лучшие имеющиеся условия, а пока мы это делаем, откроем вам полный доступ для начала работы с системой</div>
+															<!--begin::Input-->
+															<input type="number" name="tariff_products" class="form-control form-control-solid mb-2" placeholder="Количество товаров" value="" />
+															<!--end::Input-->
+															<button class="btn btn-success mt-5">Отправить заявку</button>
 														</div>
 													</div>
 												</div>
@@ -510,7 +575,7 @@
 										</div>
 										<!--end::Tab pane-->
 										<!--begin::Tab pane-->
-										<div class="tab-pane fade show active" id="settings_brands" role="tabpanel">
+										<div class="tab-pane fade" id="settings_brands" role="tabpanel">
 											<!--begin::Alert-->
 											<div class="alert alert-warning border-warning border-dashed mb-10">
 												<!--begin::Wrapper-->
@@ -551,8 +616,16 @@
 															<!--begin::Label-->
 															<label class="form-label required">Название вашего бренда</label>
 															<!--end::Label-->
-															<!--begin::Input-->
-															<input type="text" name="settings_brand_name" class="form-control form-control-solid mb-2" placeholder="Название бренда" value="" />
+															
+															<!--begin::Select2-->
+															<select class="form-select form-select-solid w-100" name="settings-brand-name" data-control="select2" data-hide-search="true" data-placeholder="Выберите бренд">
+																<option></option>
+																<option value="0">Бренд 1</option>
+																<option value="1">Бренд 1</option>
+																<option value="2">Бренд 1</option>
+																<option value="3">Бренд 1</option>
+															</select>
+															<!--end::Select2-->
 															<!--end::Input-->
 														</div>
 													</div>
@@ -706,7 +779,7 @@
 		<script src="assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
-		<script src="assets/js/custom/settings-test.js"></script>
+		<script src="assets/js/custom/apps/anymarket/settings.js"></script>
 		<script src="assets/js/widgets.bundle.js"></script>
 		<script src="assets/js/custom/widgets.js"></script>
 		<script src="assets/js/custom/apps/chat/chat.js"></script>
