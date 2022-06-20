@@ -53,7 +53,7 @@ $info:         		 								$blue;
 $warning:       									#FF7F00;
 $warning-active:    							#FF7F00;
 $warning-light:    									if(isDarkMode(), #392F28, #FFEFE5) !default;
-$warning-inverse:  									$white !default; // Custom variable
+$warning-inverse:  									#FFEFE5;
 
 
 // Danger colors
