@@ -39,6 +39,11 @@ var AmAppImageCropModal = function () {
       removeButton.addEventListener('click', function(event) {
         event.stopPropagation();
 
+        if(currentThumb === item) {
+          cropContainer.style.backgroundImage = "";
+          cropResult.style.backgroundImage = "";
+        }
+
         item.remove();
       });
     });

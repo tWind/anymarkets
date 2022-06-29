@@ -16,6 +16,7 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/product-image.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -250,11 +251,14 @@
 																</div>
 																<!--end:Tooltip-->
 															</div>
-															<!--begin::Input-->
-															<div class="form-input">
-																<input type="text" name="brand" class="form-control mb-2" placeholder="Бренд" value="" />
-															</div>
-															<!--end::Input-->
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-placeholder="Укажите бренд">
+																<option></option>
+																<option value="0">Бренд 1</option>
+																<option value="1">Бренд 2</option>
+																<option value="2">Бренд 3</option>
+															</select>
+															<!--end::Select2-->
 														</div>
 														<div class="col-4">
 															<div class="d-flex">
@@ -294,11 +298,14 @@
 																</div>
 																<!--end:Tooltip-->
 															</div>
-															<!--begin::Input-->
-															<div class="form-input">
-																<input type="text" name="production_country" class="form-control mb-2" placeholder="Страна производства" value="" />
-															</div>
-															<!--end::Input-->
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-placeholder="Укажите страну производства">
+																<option></option>
+																<option value="0">Россия</option>
+																<option value="1">Венгрия</option>
+																<option value="2">Бразилия</option>
+															</select>
+															<!--end::Select2-->
 														</div>
 														<div class="col-4">
 															<!--begin::Label-->
@@ -400,7 +407,7 @@
 																		<a class="nav-link" data-bs-toggle="tab" href="#product-var-3">Вариация 3</a>
 																</li>
 																<li class="nav-item">
-																	<button class="nav-link d-flex verical-align-middle">
+																	<button class="nav-link d-flex verical-align-middle" id="product_var_add_new">
 																		<span class="me-2">
 																			<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 																				<g clip-path="url(#clip0_171_6631)">
@@ -422,7 +429,7 @@
 														</div>
 													</div>
 													<!--end::Input group-->
-													<div class="tab-content" id="myTabContent">
+													<div class="tab-content" id="variantsTabContent">
 														<!--begin::Tab pane-->
 														<div class="tab-pane fade show active" id="product-var-1" role="tabpanel">
 															<!--begin::Input group-->
@@ -431,227 +438,70 @@
 																	<!--begin::Label-->
 																	<label class="form-label required">Фотографии</label>
 																	<!--end::Label-->
-																	<div class="product-image pt-10">
-																		<div class="product-image-container d-flex">
-																			<!--begin::Image input-->
-																			<div class="image-input image-input-outline flex-grow-0 image-input-changed me-20 h-125px" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																				<!--begin::Image preview wrapper-->
-																				<div class="image-input-wrapper w-125px h-125px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																				<!--end::Image preview wrapper-->
-		
-																				<!--begin::Edit button-->
-																				<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																					data-kt-image-input-action="change"
-																					data-bs-toggle="tooltip"
-																					data-bs-dismiss="click"
-																					title="Добавить изображение">
-																						<i class="bi bi-plus fs-3"></i>
-		
-																						<!--begin::Inputs-->
-																						<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																						<input type="hidden" name="avatar_remove" />
-																						<!--end::Inputs-->
-																				</label>
-																				<!--end::Edit button-->
-		
-																				<!--begin::Cancel button-->
-																				<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																					data-kt-image-input-action="cancel"
-																					data-bs-toggle="tooltip"
-																					data-bs-dismiss="click"
-																					title="Удалить изображение">
-																						<i class="bi bi-x fs-2"></i>
-																				</span>
-																				<!--end::Cancel button-->
-		
+																	<div class="product-images pt-10" data-product-image="panel">
+																		<div class="product-images-container d-flex">
+																			<!--begin::Main image-->
+																			<div class="product-main-image is-changed me-10" data-product-image="main" style="background-image: url(assets/media/products/blank.svg)">
+																				<div class="product-main-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
 																				<!--begin::Remove button-->
-																				<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																					data-kt-image-input-action="remove"
-																					data-bs-toggle="tooltip"
-																					data-bs-dismiss="click"
-																					title="Удалить изображение">
+																				<span class="btn-remove btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="remove">
 																						<i class="bi bi-x fs-2"></i>
 																				</span>
 																				<!--end::Remove button-->
+																				<!--begin::Add button-->
+																				<span class="btn-add btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="add">
+																						<i class="bi bi-plus fs-3"></i>
+																				</span>
+																				<!--end::Add button-->
 																			</div>
-																			<!--end::Image input-->
+																			<!--end::Main image-->
 																			<!--begin:Additional images-->
-																			<div class="product-additional-images" id="product-additional-images">
-																				<div class="d-flex flex-wrap flex-column mh-150px min-w-150px">
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																			<div class="product-additional-images me-6">
+																				<div class="d-flex flex-wrap flex-column mh-125px">
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																					<!--end::Additional image-->
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																					<!--end::Additional image-->
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																					<!--end::Additional image-->
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3 is-active" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
+																					<!--end::Additional image-->
 																				</div>
 																			</div>
 																			<!--end:Additional images-->
 																			<!--begin:addField-->
 																			<div class="product-image-add">
-																				<span class="product-image-add-btn text-hover-link-active" id="product-image-add-btn">
+																				<span class="product-image-add-btn text-hover-link-active">
 																					<i class="bi bi-plus text"></i>
 																				</span>
 																			</div>
@@ -681,21 +531,89 @@
 															<!--begin::Input group-->
 															<div class="mb-10 fv-row">
 																<div class="col-12">
-																	Variant 2
+																	<!--begin::Label-->
+																	<label class="form-label required">Фотографии</label>
+																	<!--end::Label-->
+																	<div class="product-images pt-10" data-product-image="panel">
+																		<div class="product-images-container d-flex">
+																			<!--begin::Main image-->
+																			<div class="product-main-image is-active me-10" data-product-image="main" style="background-image: url(assets/media/products/blank.svg)">
+																				<div class="product-main-image-wrapper"></div>
+																				<!--begin::Remove button-->
+																				<span class="btn-remove btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="remove">
+																						<i class="bi bi-x fs-2"></i>
+																				</span>
+																				<!--end::Remove button-->
+																				<!--begin::Add button-->
+																				<span class="btn-add btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="add">
+																						<i class="bi bi-plus fs-3"></i>
+																				</span>
+																				<!--end::Add button-->
+																			</div>
+																			<!--end::Main image-->
+																		</div>
+																	</div>
 																</div>
 															</div>
-															<!--end::Input group-->
+															<div class="mb-10 fv-row">
+																<div class="col-4">
+																	<!--begin::Select2-->
+																	<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Выберите цвет">
+																		<option></option>
+																		<option value="0">Красный</option>
+																		<option value="1">Желтый</option>
+																		<option value="2">Зеленый</option>
+																	</select>
+																	<!--end::Select2-->
+																</div>
+															</div>
 														</div>
 														<!--end::Tab pane-->
-														<!--end::Tab pane-->
+														<!--begin::Tab pane-->
 														<div class="tab-pane fade" id="product-var-3" role="tabpanel">
 															<!--begin::Input group-->
 															<div class="mb-10 fv-row">
 																<div class="col-12">
-																	Variant 3
+																	<!--begin::Label-->
+																	<label class="form-label required">Фотографии</label>
+																	<!--end::Label-->
+																	<div class="product-images pt-10" data-product-image="panel">
+																		<div class="product-images-container d-flex">
+																			<!--begin::Main image-->
+																			<div class="product-main-image is-active me-10" data-product-image="main" style="background-image: url(assets/media/products/blank.svg)">
+																				<div class="product-main-image-wrapper"></div>
+																				<!--begin::Remove button-->
+																				<span class="btn-remove btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="remove">
+																						<i class="bi bi-x fs-2"></i>
+																				</span>
+																				<!--end::Remove button-->
+																				<!--begin::Add button-->
+																				<span class="btn-add btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="add">
+																						<i class="bi bi-plus fs-3"></i>
+																				</span>
+																				<!--end::Add button-->
+																			</div>
+																			<!--end::Main image-->
+																		</div>
+																	</div>
 																</div>
 															</div>
-															<!--end::Input group-->
+															<div class="mb-10 fv-row">
+																<div class="col-4">
+																	<!--begin::Select2-->
+																	<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Выберите цвет">
+																		<option></option>
+																		<option value="0">Красный</option>
+																		<option value="1">Желтый</option>
+																		<option value="2">Зеленый</option>
+																	</select>
+																	<!--end::Select2-->
+																</div>
+															</div>
 														</div>
 														<!--end::Tab pane-->
 													</div>
@@ -965,6 +883,7 @@
 		<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
 		<script src="assets/js/custom/utilities/modals/create-app.js"></script>
 		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+		<script src="assets/js/work.js"></script>
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
 	</body>

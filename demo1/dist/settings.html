@@ -496,7 +496,7 @@
 														</label>
 													</div>
 													<!--end::Checkbox-->
-													<span class="badge badge-light-dark">Вы убираете Wildberries. При сохранении настроек он будет отключен</span>
+													<span class="badge badge-light-dark">Не подключено</span>
 												</div>
 												<!--end::Card Header-->
 												<!--begin::Card Body-->
@@ -533,7 +533,7 @@
 												<div class="card-header align-items-center pt-12 mb-10">
 													<!--begin::Checkbox-->
 													<div class="form-check form-check-custom form-check-solid">
-														<input class="form-check-input" type="checkbox" value="" id="settings_markets_ya_check" />
+														<input class="form-check-input" type="checkbox" value="" id="settings_markets_ya_check" checked />
 														<label class="form-check-label" for="settings_markets_ya_check">
 															Яндекс.Маркет
 														</label>
@@ -543,9 +543,52 @@
 												</div>
 												<!--end::Card Header-->
 												<!--begin::Card Body-->
-												<div class="card-body d-none" id="settings_markets_ya">
+												<div class="card-body" id="settings_markets_ya">
 													<label class="form-label required">Для получения OAuth токена нажмите Подключить Яндекс.Маркет</label>
 													<div class="py-5"><button class="btn btn-secondary">Подключить Яндекс.Маркет</button></div>
+												</div>
+												<!--end::Card Body-->
+											</div>
+											<!--end:Card-->
+											<!--begin:Card-->
+											<div class="card card-flush border border-secondary rounded mb-5 mb-xl-8">
+												<!--begin::Card Header-->
+												<div class="card-header align-items-center pt-12 mb-10">
+													<!--begin::Checkbox-->
+													<div class="form-check form-check-custom form-check-solid">
+														<input class="form-check-input" type="checkbox" value="" id="settings_markets_ya_check_2" />
+														<label class="form-check-label" for="settings_markets_ya_check_2">
+															Яндекс.Маркет (состояние отключения)
+														</label>
+													</div>
+													<!--end::Checkbox-->
+													<span class="badge badge-light-dark" data-am-settings-item="badge">Вы убираете Yandex.Market. При сохранении настроек он будет отключен</span>
+												</div>
+												<!--end::Card Header-->
+												<!--begin::Card Body-->
+												<div class="card-body d-none" id="settings_markets_ya_2">
+													<div class="row mb-10">
+														<div class="col-5 position-relative me-10">
+															<!--begin::Label-->
+															<label class="form-label">
+																<span>Магазин выбран</span>
+															</label>
+															<!--end::Label-->
+															<!--begin:Link-->
+															<div class="form-link position-absolute top-0 end-0 pe-5">
+																<a class="fw-bolder text-info" href="#">Где взять Client-Id OZON?</a>
+															</div>
+															<!--end:LInk-->
+															<!--begin::Select2-->
+															<select class="form-select form-select-solid mb-2" name="market-adress" data-control="select2" data-hide-search="true" data-placeholder="Выберите магазин">
+																<option></option>
+																<option value="0">Пролетарская</option>
+																<option value="1">Молодежная</option>
+																<option value="2">Трехсвятская</option>
+															</select>
+															<!--end::Select2-->
+														</div>
+													</div>
 												</div>
 												<!--end::Card Body-->
 											</div>
@@ -562,7 +605,7 @@
 														</label>
 													</div>
 													<!--end::Checkbox-->
-													<span class="badge badge-light-dark">Подключено</span>
+													<span class="badge badge-light-dark">Не подключено</span>
 												</div>
 												<!--end::Card Header-->
 												<!--begin::Card Body-->
@@ -618,7 +661,7 @@
 															<!--end::Label-->
 															
 															<!--begin::Select2-->
-															<select class="form-select form-select-solid w-100" name="settings-brand-name" data-control="select2" data-hide-search="true" data-placeholder="Выберите бренд">
+															<select class="form-select form-select-solid w-100" name="settings-brand-name" data-control="select2" data-placeholder="Выберите бренд">
 																<option></option>
 																<option value="0">Бренд 1</option>
 																<option value="1">Бренд 1</option>
