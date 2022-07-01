@@ -17,6 +17,7 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
 		<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="assets/css/modal.css" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -256,11 +257,86 @@
 													</div>
 													<!--end::Close-->
 													<div class="row mb-20">
-														<div class="col-8">
+														<div class="col-8 d-flex">
 															<!--begin::Thumbs-->
-															<div class="crop-thumbs">
+															<div class="crop-thumbs me-5">
 																<!--begin::Image input-->
 																<div class="crop-thumb is-active" style="background-image: url(assets/media/products/blank.svg)">
+																	<!--begin::Image preview wrapper-->
+																	<div class="crop-thumb-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																	<!--end::Image preview wrapper-->
+
+																	<!--begin::Remove button-->
+																	<span class="crop-thumb-remove"
+																		data-thumb-action="remove"
+																		data-bs-toggle="tooltip"
+																		data-bs-dismiss="click"
+																		title="Удалить изображение">
+																		<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L4 2.58579L6.29289 0.292893C6.68342 -0.0976311 7.31658 -0.0976311 7.70711 0.292893C8.09763 0.683417 8.09763 1.31658 7.70711 1.70711L5.41421 4L7.70711 6.29289C8.09763 6.68342 8.09763 7.31658 7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L4 5.41421L1.70711 7.70711C1.31658 8.09763 0.683417 8.09763 0.292893 7.70711C-0.0976311 7.31658 -0.0976311 6.68342 0.292893 6.29289L2.58579 4L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="#A4A4BA"/>
+																		</svg>
+																	</span>
+																	<!--end::Remove button-->
+																	<!--begin::Validated badge-->
+																	<span class="crop-thumb-badge">
+																		<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path d="M11.7311 1.68232C12.1079 1.27857 12.0861 0.645779 11.6823 0.268945C11.2786 -0.107889 10.6458 -0.0860689 10.2689 0.317682L11.7311 1.68232ZM1.75926 4.34921C1.39983 3.92988 0.768534 3.88132 0.349209 4.24074C-0.0701172 4.60017 -0.118679 5.23147 0.240743 5.65079L1.75926 4.34921ZM10.2689 0.317682L4.03172 7.00042L5.49383 8.36506L11.7311 1.68232L10.2689 0.317682ZM4.03172 7.00042L1.75926 4.34921L0.240743 5.65079L2.51321 8.302L4.03172 7.00042ZM4.03172 7.00042L4.03172 7.00042L2.51321 8.302C3.28927 9.20741 4.68017 9.23683 5.49383 8.36506L4.03172 7.00042Z" fill="white"/>
+																		</svg>
+																	</span>
+																</div>
+																<!--end::Image input-->
+																<!--begin::Image input-->
+																<div class="crop-thumb" style="background-image: url(assets/media/products/blank.svg)">
+																	<!--begin::Image preview wrapper-->
+																	<div class="crop-thumb-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																	<!--end::Image preview wrapper-->
+
+																	<!--begin::Remove button-->
+																	<span class="crop-thumb-remove"
+																		data-thumb-action="remove"
+																		data-bs-toggle="tooltip"
+																		data-bs-dismiss="click"
+																		title="Удалить изображение">
+																		<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L4 2.58579L6.29289 0.292893C6.68342 -0.0976311 7.31658 -0.0976311 7.70711 0.292893C8.09763 0.683417 8.09763 1.31658 7.70711 1.70711L5.41421 4L7.70711 6.29289C8.09763 6.68342 8.09763 7.31658 7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L4 5.41421L1.70711 7.70711C1.31658 8.09763 0.683417 8.09763 0.292893 7.70711C-0.0976311 7.31658 -0.0976311 6.68342 0.292893 6.29289L2.58579 4L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="#A4A4BA"/>
+																		</svg>
+																	</span>
+																	<!--end::Remove button-->
+																	<!--begin::Validated badge-->
+																	<span class="crop-thumb-badge">
+																		<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path d="M11.7311 1.68232C12.1079 1.27857 12.0861 0.645779 11.6823 0.268945C11.2786 -0.107889 10.6458 -0.0860689 10.2689 0.317682L11.7311 1.68232ZM1.75926 4.34921C1.39983 3.92988 0.768534 3.88132 0.349209 4.24074C-0.0701172 4.60017 -0.118679 5.23147 0.240743 5.65079L1.75926 4.34921ZM10.2689 0.317682L4.03172 7.00042L5.49383 8.36506L11.7311 1.68232L10.2689 0.317682ZM4.03172 7.00042L1.75926 4.34921L0.240743 5.65079L2.51321 8.302L4.03172 7.00042ZM4.03172 7.00042L4.03172 7.00042L2.51321 8.302C3.28927 9.20741 4.68017 9.23683 5.49383 8.36506L4.03172 7.00042Z" fill="white"/>
+																		</svg>
+																	</span>
+																</div>
+																<!--end::Image input-->
+																<!--begin::Image input-->
+																<div class="crop-thumb" style="background-image: url(assets/media/products/blank.svg)">
+																	<!--begin::Image preview wrapper-->
+																	<div class="crop-thumb-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																	<!--end::Image preview wrapper-->
+
+																	<!--begin::Remove button-->
+																	<span class="crop-thumb-remove"
+																		data-thumb-action="remove"
+																		data-bs-toggle="tooltip"
+																		data-bs-dismiss="click"
+																		title="Удалить изображение">
+																		<svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L4 2.58579L6.29289 0.292893C6.68342 -0.0976311 7.31658 -0.0976311 7.70711 0.292893C8.09763 0.683417 8.09763 1.31658 7.70711 1.70711L5.41421 4L7.70711 6.29289C8.09763 6.68342 8.09763 7.31658 7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L4 5.41421L1.70711 7.70711C1.31658 8.09763 0.683417 8.09763 0.292893 7.70711C-0.0976311 7.31658 -0.0976311 6.68342 0.292893 6.29289L2.58579 4L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="#A4A4BA"/>
+																		</svg>
+																	</span>
+																	<!--end::Remove button-->
+																	<!--begin::Validated badge-->
+																	<span class="crop-thumb-badge">
+																		<svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+																			<path d="M11.7311 1.68232C12.1079 1.27857 12.0861 0.645779 11.6823 0.268945C11.2786 -0.107889 10.6458 -0.0860689 10.2689 0.317682L11.7311 1.68232ZM1.75926 4.34921C1.39983 3.92988 0.768534 3.88132 0.349209 4.24074C-0.0701172 4.60017 -0.118679 5.23147 0.240743 5.65079L1.75926 4.34921ZM10.2689 0.317682L4.03172 7.00042L5.49383 8.36506L11.7311 1.68232L10.2689 0.317682ZM4.03172 7.00042L1.75926 4.34921L0.240743 5.65079L2.51321 8.302L4.03172 7.00042ZM4.03172 7.00042L4.03172 7.00042L2.51321 8.302C3.28927 9.20741 4.68017 9.23683 5.49383 8.36506L4.03172 7.00042Z" fill="white"/>
+																		</svg>
+																	</span>
+																</div>
+																<!--end::Image input-->
+																<!--begin::Image input-->
+																<div class="crop-thumb" style="background-image: url(assets/media/products/blank.svg)">
 																	<!--begin::Image preview wrapper-->
 																	<div class="crop-thumb-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
 																	<!--end::Image preview wrapper-->
@@ -336,6 +412,11 @@
 																<!--end::Image input-->
 															</div>
 															<!--end::Thumbs-->
+															<div class="thumb-add">
+																<span class="thumb-add-btn text-hover-link-active">
+																	<i class="bi bi-plus text"></i>
+																</span>
+															</div>
 														</div>
 													</div>
 													<div class="row mb-15">
@@ -566,8 +647,11 @@
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="assets/plugins/global/plugins.bundle.js"></script>
 		<script src="assets/js/scripts.bundle.js"></script>
-		<script src="assets/js/custom/apps/anymarket/crop-modal.js"></script>
+		<script src="assets/js/work-crop-modal.js"></script>
 		<!--end::Global Javascript Bundle-->
+		<!--begin::Page Custom Javascript(used by this page)-->
+		<script src="assets/js/custom/apps/anymarket/crop-modal.js"></script>
+		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
 	</body>
 	<!--end::Body-->

@@ -1,5 +1,4 @@
 .crop-thumbs {
-  width: 70%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -7,13 +6,27 @@
 .crop-thumb {
   position: relative;
   cursor: pointer;
-  width: 43px;
-  height: 43px;
+  width: 90px;
+  height: 90px;
   margin-right: 1rem;
+  margin-bottom: 1rem;
   background-color: #FFF;
   box-shadow: 0px 0px 30px rgba(0 0 0 / 0.3);
   border-radius: 6px;
   background-size: cover;
+}
+.crop-thumbs.small {
+  max-height: 150px;
+  flex-direction: column;
+}
+
+.crop-thumbs.small .crop-thumb{
+  width: 43px;
+  height: 43px;
+}
+.crop-thumbs.small .crop-thumb-wrapper {
+  width: 43px;
+  height: 43px;
 }
 
 .crop-thumb.is-active .crop-thumb-wrapper {
@@ -25,11 +38,15 @@
 }
 
 .crop-thumb-wrapper {
-  width: 43px;
-  height: 43px;
+  width: 90px;
+  height: 90px;
   background-size: cover;
   border: 3px solid #FFF;
   border-radius: 6px;
+}
+.crop-thumb.small .crop-thumb-wrapper {
+  width: 43px;
+  height: 43px;
 }
 
 .crop-thumb-remove {
@@ -55,6 +72,23 @@
 
 .crop-thumb.is-valid .crop-thumb-badge {
   display: flex;
+}
+
+.thumb-add-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: #F7F8FD;
+  border: 3px solid #FFF;
+  border-radius: 6px;
+  box-shadow: 0px 0px 30px rgb(207 208 229 / 77%);
+  cursor: pointer;
+}
+.thumb-add-btn i {
+  font-size: 35px;
+  color: #A4A4BA;
 }
 
 .crop-options-buttons {
@@ -105,4 +139,4 @@
   width: 3rem;
   height: 3rem;
   font-size: 20px;
-} 
+}
