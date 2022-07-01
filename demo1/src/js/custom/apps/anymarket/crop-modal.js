@@ -8,12 +8,21 @@ var AmAppImageCropModal = function () {
 
   // remove thumbs
   const handleDeleteThumb = () => {
-    const thumbsList = modal.querySelectorAll('.crop-thumb');
+    const thumbsPane = modal.querySelector('.crop-thumbs');
+    let thumbsList = modal.querySelectorAll('.crop-thumb');
     let currentImageUrl;
 
     currentThumb = [...thumbsList].find(thumb => {
       return thumb.classList.contains('is-active');
     });
+
+    if(thumbsList.length > 4) {
+      thumbsPane.classList.add('small');
+    } else {
+      thumbsPane.classList.remove('small');
+    }
+
+    setThumbsPaneWidth();
 
     thumbsList.forEach(item => {
       const removeButton = item.querySelector('[data-thumb-action="remove"]');
@@ -39,9 +48,35 @@ var AmAppImageCropModal = function () {
       removeButton.addEventListener('click', function(event) {
         event.stopPropagation();
 
+        if(currentThumb === item) {
+          cropContainer.style.backgroundImage = "";
+          cropResult.style.backgroundImage = "";
+        }
+
         item.remove();
+
+        thumbsList = modal.querySelectorAll('.crop-thumb');
+
+        if(thumbsList.length <= 4) {
+          thumbsPane.classList.remove('small');
+          thumbsPane.style.width = "";
+        }
+
+        setThumbsPaneWidth();
       });
     });
+
+    function setThumbsPaneWidth() {
+      if(!thumbsPane) return;
+      if(!thumbsPane.classList.contains('small')) return;
+
+      let mod = 1;
+
+      if(thumbsList.length % 2 === 0)
+        mod = 0;
+
+      thumbsPane.style.width = `${(thumbsList.length + mod) * 54 / 2}px`;
+    }
   }
 
   // crop options

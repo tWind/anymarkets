@@ -38,15 +38,30 @@ var AnymarketAppSettings = function () {
       'settings_markets_vk':'settings_markets_vk_check',
       'settings_markets_wb':'settings_markets_wb_check',
       'settings_markets_ya':'settings_markets_ya_check',
+      'settings_markets_ya_2':'settings_markets_ya_check_2',
+    },
+    BADGES_TEXT = {
+      activated: 'Подключено',
+      deactivated: 'Отключено',
+      'is-deactivating': (marketName) => {
+        return `'Вы убираете ${marketName}. При сохранении настроек он будет отключен',`
+      }
     }
 
+
     const bindMarketToggle = (element, checkbox) => {
+      // show/hide badges
+      const badge = checkbox.parentNode.nextElementSibling,
+        label = checkbox.nextElementSibling.innerText;
+      
       // Show/hide additional variants
       checkbox.addEventListener('change', e => {
         if (e.target.checked) {
             element.classList.remove('d-none');
+            badge.innerText = BADGES_TEXT.activated;
         } else {
             element.classList.add('d-none');
+            badge.innerText = BADGES_TEXT.deactivated;
         }
       });
     }

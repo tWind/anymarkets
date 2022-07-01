@@ -17,6 +17,11 @@
 	// Readonly state
 	&[readonly] {
 		background-color: $input-readonly-bg;
+		color: $gray-400;
+	}
+
+	&:disabled {
+		color: $gray-400;
 	}
 
 	// Solid style

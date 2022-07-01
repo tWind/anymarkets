@@ -5,6 +5,7 @@
 		<base href="">
 		<title>Anymarkets</title>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=1280">
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 		<!--begin::Fonts-->
 		<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -20,7 +21,7 @@
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
-	<body class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px;">
+	<body class="header-fixed header-tablet-and-mobile-fixed toolbar-enabled toolbar-fixed aside-enabled aside-fixed" style="--kt-toolbar-height:55px; min-width: 1280px;">
 		<!--begin::Main-->
 		<!--begin::Root-->
 		<div class="d-flex flex-column flex-root">
@@ -192,10 +193,10 @@
 						<!--begin::Post-->
 						<div class="post d-flex flex-column-fluid" id="kt_post">
 							<!--begin::Container-->
-							<div id="kt_content_container" class="container-xxl">
+							<div id="kt_content_container" class="container-xxl bg-white rounded mx-10">
 								<!--begin::Form-->
 								<form id="kt_ecommerce_add_product_form" class="form">
-									<div class="card card-flush mb-5 mb-xl-8">
+									<div class="card card-flush pb-5">
 										<!--begin::Card Header-->
 										<div class="card-header pt-5 pb-10">
 											<ul class="nav nav-tabs nav-pills nav-pills-custom border-0">
@@ -250,11 +251,14 @@
 																</div>
 																<!--end:Tooltip-->
 															</div>
-															<!--begin::Input-->
-															<div class="form-input">
-																<input type="text" name="brand" class="form-control mb-2" placeholder="Бренд" value="" />
-															</div>
-															<!--end::Input-->
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-placeholder="Укажите бренд">
+																<option></option>
+																<option value="0">Бренд 1</option>
+																<option value="1">Бренд 2</option>
+																<option value="2">Бренд 3</option>
+															</select>
+															<!--end::Select2-->
 														</div>
 														<div class="col-4">
 															<div class="d-flex">
@@ -294,11 +298,14 @@
 																</div>
 																<!--end:Tooltip-->
 															</div>
-															<!--begin::Input-->
-															<div class="form-input">
-																<input type="text" name="production_country" class="form-control mb-2" placeholder="Страна производства" value="" />
-															</div>
-															<!--end::Input-->
+															<!--begin::Select2-->
+															<select class="form-select mb-2" name="color" data-control="select2" data-placeholder="Укажите страну производства">
+																<option></option>
+																<option value="0">Россия</option>
+																<option value="1">Венгрия</option>
+																<option value="2">Бразилия</option>
+															</select>
+															<!--end::Select2-->
 														</div>
 														<div class="col-4">
 															<!--begin::Label-->
@@ -400,7 +407,7 @@
 																		<a class="nav-link" data-bs-toggle="tab" href="#product-var-3">Вариация 3</a>
 																</li>
 																<li class="nav-item">
-																	<button class="nav-link d-flex verical-align-middle">
+																	<button class="nav-link d-flex verical-align-middle" id="product_var_add_new">
 																		<span class="me-2">
 																			<svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 																				<g clip-path="url(#clip0_171_6631)">
@@ -422,7 +429,7 @@
 														</div>
 													</div>
 													<!--end::Input group-->
-													<div class="tab-content" id="myTabContent">
+													<div class="tab-content" id="variantsTabContent">
 														<!--begin::Tab pane-->
 														<div class="tab-pane fade show active" id="product-var-1" role="tabpanel">
 															<!--begin::Input group-->
@@ -431,227 +438,70 @@
 																	<!--begin::Label-->
 																	<label class="form-label required">Фотографии</label>
 																	<!--end::Label-->
-																	<div class="product-image pt-10">
-																		<div class="product-image-container d-flex">
-																			<!--begin::Image input-->
-																			<div class="image-input image-input-outline flex-grow-0 image-input-changed me-20 h-125px" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																				<!--begin::Image preview wrapper-->
-																				<div class="image-input-wrapper w-125px h-125px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																				<!--end::Image preview wrapper-->
-		
-																				<!--begin::Edit button-->
-																				<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																					data-kt-image-input-action="change"
-																					data-bs-toggle="tooltip"
-																					data-bs-dismiss="click"
-																					title="Добавить изображение">
-																						<i class="bi bi-plus fs-3"></i>
-		
-																						<!--begin::Inputs-->
-																						<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																						<input type="hidden" name="avatar_remove" />
-																						<!--end::Inputs-->
-																				</label>
-																				<!--end::Edit button-->
-		
-																				<!--begin::Cancel button-->
-																				<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																					data-kt-image-input-action="cancel"
-																					data-bs-toggle="tooltip"
-																					data-bs-dismiss="click"
-																					title="Удалить изображение">
-																						<i class="bi bi-x fs-2"></i>
-																				</span>
-																				<!--end::Cancel button-->
-		
+																	<div class="product-images pt-10" data-product-image="panel">
+																		<div class="product-images-container d-flex">
+																			<!--begin::Main image-->
+																			<div class="product-main-image is-changed" data-product-image="main" style="background-image: url(assets/media/products/blank.svg)">
+																				<div class="product-main-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
 																				<!--begin::Remove button-->
-																				<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																					data-kt-image-input-action="remove"
-																					data-bs-toggle="tooltip"
-																					data-bs-dismiss="click"
-																					title="Удалить изображение">
+																				<span class="btn-remove btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="remove">
 																						<i class="bi bi-x fs-2"></i>
 																				</span>
 																				<!--end::Remove button-->
+																				<!--begin::Add button-->
+																				<span class="btn-add btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="add">
+																						<i class="bi bi-plus fs-3"></i>
+																				</span>
+																				<!--end::Add button-->
 																			</div>
-																			<!--end::Image input-->
+																			<!--end::Main image-->
 																			<!--begin:Additional images-->
-																			<div class="product-additional-images" id="product-additional-images">
-																				<div class="d-flex flex-wrap flex-column mh-150px min-w-150px">
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																			<div class="product-additional-images images-small me-6">
+																				<div class="product-additional-images-wrapper">
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																					<!--end::Additional image-->
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																					<!--end::Additional image-->
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
-																					<!--begin::Image input-->
-																					<div class="image-input image-input-outline image-input-changed w-40px h-40px me-5 mb-5" data-kt-image-input="true" style="background-image: url(assets/media/products/blank.svg)">
-																						<!--begin::Image preview wrapper-->
-																						<div class="image-input-wrapper w-40px h-40px" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
-																						<!--end::Image preview wrapper-->
-		
-																						<!--begin::Edit button-->
-																						<label class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="change"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Добавить изображение">
-																								<i class="bi bi-plus fs-3"></i>
-		
-																								<!--begin::Inputs-->
-																								<input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-																								<input type="hidden" name="avatar_remove" />
-																								<!--end::Inputs-->
-																						</label>
-																						<!--end::Edit button-->
-		
-																						<!--begin::Cancel button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="cancel"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
+																					<!--end::Additional image-->
+																					<!--begin::Additional image-->
+																					<div class="product-image mb-3 is-active" data-product-image="additional" style="background-image: url(assets/media/products/blank.svg)">
+																						<div class="product-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-20px h-20px bg-body shadow"
+																							data-product-action="remove">
+																								<i class="bi bi-x fs-5"></i>
 																						</span>
-																						<!--end::Cancel button-->
-		
-																						<!--begin::Remove button-->
-																						<span class="btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
-																							data-kt-image-input-action="remove"
-																							data-bs-toggle="tooltip"
-																							data-bs-dismiss="click"
-																							title="Удалить изображение">
-																								<i class="bi bi-x fs-2"></i>
-																						</span>
-																						<!--end::Remove button-->
 																					</div>
-																					<!--end::Image input-->
+																					<!--end::Additional image-->
 																				</div>
 																			</div>
 																			<!--end:Additional images-->
 																			<!--begin:addField-->
 																			<div class="product-image-add">
-																				<span class="product-image-add-btn text-hover-link-active" id="product-image-add-btn">
+																				<span class="product-image-add-btn text-hover-link-active">
 																					<i class="bi bi-plus text"></i>
 																				</span>
 																			</div>
@@ -675,119 +525,377 @@
 																</div>
 															</div>
 															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10 row fv-row">
+																<div class="col-4">
+																	<div class="d-flex">
+																		<!--begin::Label-->
+																		<label class="required form-label">Артикул</label>
+																		<!--end::Label-->
+																		<!--begin:Tooltip-->
+																		<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
+																			<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+																				<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
+																				<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
+																			</svg>
+																		</div>
+																		<!--end:Tooltip-->
+																	</div>
+																	<!--begin::Checkbox-->
+																	<div class="form-check form-check-custom form-check-solid mb-3">
+																		<input class="form-check-input" type="checkbox" value="" data-am-checkbox="auto-code" data-am-checkbox-target="vendor_code_add_1" id="vendor_code_auto_1"/>
+																		<label class="form-check-label" for="vendor_code_auto_1">
+																			Сформировать автоматически
+																		</label>
+																	</div>
+																	<!--end::Checkbox-->
+																	<!--begin::Input-->
+																	<div class="form-input">
+																		<input type="text" id="vendor_code_add_1" name="vendor_code_add_1" class="form-control mb-2" value="" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-4">
+																	<div class="d-flex">
+																		<!--begin::Label-->
+																		<label class="required form-label">Штрихкод</label>
+																		<!--end::Label-->
+																		<!--begin:Tooltip-->
+																		<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
+																			<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+																				<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
+																				<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
+																			</svg>
+																		</div>
+																		<!--end:Tooltip-->
+																	</div>
+																	<!--begin::Checkbox-->
+																	<div class="form-check form-check-custom form-check-solid mb-3">
+																		<input class="form-check-input" type="checkbox" value="" data-am-checkbox="auto-code" data-am-checkbox-target="bar_code_add_1" id="bar_code_auto_1"/>
+																		<label class="form-check-label" for="bar_code_auto_1">
+																			Сформировать автоматически
+																		</label>
+																	</div>
+																	<!--end::Checkbox-->
+																	<!--begin::Input-->
+																	<div class="form-input">
+																		<input type="text" id="bar_code_add_1" name="bar_code_add_1" class="form-control mb-2" value="" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10 row fv-row">
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена со скидкой</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price_discount" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена Ozon Premium</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price_premium" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+															</div>
+															<!--end::Input group-->
 														</div>
 														<!--end::Tab pane-->
 														<div class="tab-pane fade" id="product-var-2" role="tabpanel">
 															<!--begin::Input group-->
 															<div class="mb-10 fv-row">
 																<div class="col-12">
-																	Variant 2
+																	<!--begin::Label-->
+																	<label class="form-label required">Фотографии</label>
+																	<!--end::Label-->
+																	<div class="product-images pt-10" data-product-image="panel">
+																		<div class="product-images-container d-flex">
+																			<!--begin::Main image-->
+																			<div class="product-main-image is-active is-changed me-10" data-product-image="main" style="background-image: url(assets/media/products/blank.svg)">
+																				<div class="product-main-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																				<!--begin::Remove button-->
+																				<span class="btn-remove btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="remove">
+																						<i class="bi bi-x fs-2"></i>
+																				</span>
+																				<!--end::Remove button-->
+																				<!--begin::Add button-->
+																				<span class="btn-add btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="add">
+																						<i class="bi bi-plus fs-3"></i>
+																				</span>
+																				<!--end::Add button-->
+																			</div>
+																			<!--end::Main image-->
+																			<!--begin:addField-->
+																			<div class="product-image-add">
+																				<span class="product-image-add-btn text-hover-link-active">
+																					<i class="bi bi-plus text"></i>
+																				</span>
+																			</div>
+																			<!--end:addField-->
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="mb-10 fv-row">
+																<div class="col-4">
+																	<!--begin::Select2-->
+																	<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Выберите цвет">
+																		<option></option>
+																		<option value="0">Красный</option>
+																		<option value="1">Желтый</option>
+																		<option value="2">Зеленый</option>
+																	</select>
+																	<!--end::Select2-->
+																</div>
+															</div>
+															<!--begin::Input group-->
+															<div class="mb-10 row fv-row">
+																<div class="col-4">
+																	<div class="d-flex">
+																		<!--begin::Label-->
+																		<label class="required form-label">Артикул</label>
+																		<!--end::Label-->
+																		<!--begin:Tooltip-->
+																		<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
+																			<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+																				<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
+																				<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
+																			</svg>
+																		</div>
+																		<!--end:Tooltip-->
+																	</div>
+																	<!--begin::Checkbox-->
+																	<div class="form-check form-check-custom form-check-solid mb-3">
+																		<input class="form-check-input" type="checkbox" value="" data-am-checkbox="auto-code" data-am-checkbox-target="vendor_code_add_2" id="vendor_code_auto_2"/>
+																		<label class="form-check-label" for="vendor_code_auto_2">
+																			Сформировать автоматически
+																		</label>
+																	</div>
+																	<!--end::Checkbox-->
+																	<!--begin::Input-->
+																	<div class="form-input">
+																		<input type="text" id="vendor_code_add_2" name="vendor_code_add_2" class="form-control mb-2" value="" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-4">
+																	<div class="d-flex">
+																		<!--begin::Label-->
+																		<label class="required form-label">Штрихкод</label>
+																		<!--end::Label-->
+																		<!--begin:Tooltip-->
+																		<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
+																			<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+																				<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
+																				<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
+																			</svg>
+																		</div>
+																		<!--end:Tooltip-->
+																	</div>
+																	<!--begin::Checkbox-->
+																	<div class="form-check form-check-custom form-check-solid mb-3">
+																		<input class="form-check-input" type="checkbox" value="" data-am-checkbox="auto-code" data-am-checkbox-target="bar_code_add_2" id="bar_code_auto_2"/>
+																		<label class="form-check-label" for="bar_code_auto_2">
+																			Сформировать автоматически
+																		</label>
+																	</div>
+																	<!--end::Checkbox-->
+																	<!--begin::Input-->
+																	<div class="form-input">
+																		<input type="text" id="bar_code_add_2" name="bar_code_add" class="form-control mb-2" value="" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10 row fv-row">
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена со скидкой</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price_discount" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена Ozon Premium</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price_premium" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
 																</div>
 															</div>
 															<!--end::Input group-->
 														</div>
 														<!--end::Tab pane-->
-														<!--end::Tab pane-->
+														<!--begin::Tab pane-->
 														<div class="tab-pane fade" id="product-var-3" role="tabpanel">
 															<!--begin::Input group-->
 															<div class="mb-10 fv-row">
 																<div class="col-12">
-																	Variant 3
+																	<!--begin::Label-->
+																	<label class="form-label required">Фотографии</label>
+																	<!--end::Label-->
+																	<div class="product-images pt-10" data-product-image="panel">
+																		<div class="product-images-container d-flex">
+																			<!--begin::Main image-->
+																			<div class="product-main-image is-changed is-active me-10" data-product-image="main" style="background-image: url(assets/media/products/blank.svg)">
+																				<div class="product-main-image-wrapper" style="background-image: url('assets/media/illustrations/anymarkets/66045411-480px.jpg')"></div>
+																				<!--begin::Remove button-->
+																				<span class="btn-remove btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="remove">
+																						<i class="bi bi-x fs-2"></i>
+																				</span>
+																				<!--end::Remove button-->
+																				<!--begin::Add button-->
+																				<span class="btn-add btn btn-icon btn-circle btn-active-color-link-active w-25px h-25px bg-body shadow"
+																					data-product-action="add">
+																						<i class="bi bi-plus fs-3"></i>
+																				</span>
+																				<!--end::Add button-->
+																			</div>
+																			<!--end::Main image-->
+																			
+																			<!--begin:addField-->
+																			<div class="product-image-add">
+																				<span class="product-image-add-btn text-hover-link-active">
+																					<i class="bi bi-plus text"></i>
+																				</span>
+																			</div>
+																			<!--end:addField-->
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="mb-10 fv-row">
+																<div class="col-4">
+																	<!--begin::Select2-->
+																	<select class="form-select mb-2" name="color" data-control="select2" data-hide-search="true" data-placeholder="Выберите цвет">
+																		<option></option>
+																		<option value="0">Красный</option>
+																		<option value="1">Желтый</option>
+																		<option value="2">Зеленый</option>
+																	</select>
+																	<!--end::Select2-->
+																</div>
+															</div>
+															<!--begin::Input group-->
+															<div class="mb-10 row fv-row">
+																<div class="col-4">
+																	<div class="d-flex">
+																		<!--begin::Label-->
+																		<label class="required form-label">Артикул</label>
+																		<!--end::Label-->
+																		<!--begin:Tooltip-->
+																		<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
+																			<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+																				<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
+																				<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
+																			</svg>
+																		</div>
+																		<!--end:Tooltip-->
+																	</div>
+																	<!--begin::Checkbox-->
+																	<div class="form-check form-check-custom form-check-solid mb-3">
+																		<input class="form-check-input" type="checkbox" value="" data-am-checkbox="auto-code" data-am-checkbox-target="vendor_code_add_3" id="vendor_code_auto_3"/>
+																		<label class="form-check-label" for="vendor_code_auto_3">
+																			Сформировать автоматически
+																		</label>
+																	</div>
+																	<!--end::Checkbox-->
+																	<!--begin::Input-->
+																	<div class="form-input">
+																		<input type="text" id="vendor_code_add_3" name="vendor_code_add_3" class="form-control mb-2" value="" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-4">
+																	<div class="d-flex">
+																		<!--begin::Label-->
+																		<label class="required form-label">Штрихкод</label>
+																		<!--end::Label-->
+																		<!--begin:Tooltip-->
+																		<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
+																			<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+																				<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
+																				<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
+																			</svg>
+																		</div>
+																		<!--end:Tooltip-->
+																	</div>
+																	<!--begin::Checkbox-->
+																	<div class="form-check form-check-custom form-check-solid mb-3">
+																		<input class="form-check-input" type="checkbox" value="" data-am-checkbox="auto-code" data-am-checkbox-target="bar_code_add_3" id="bar_code_auto_3"/>
+																		<label class="form-check-label" for="bar_code_auto_3">
+																			Сформировать автоматически
+																		</label>
+																	</div>
+																	<!--end::Checkbox-->
+																	<!--begin::Input-->
+																	<div class="form-input">
+																		<input type="text" id="bar_code_add_3" name="bar_code_add_3" class="form-control mb-2" value="" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+															<!--end::Input group-->
+															<!--begin::Input group-->
+															<div class="mb-10 row fv-row">
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена со скидкой</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price_discount" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
+																</div>
+																<div class="col-3">
+																	<!--begin::Label-->
+																	<label class="form-label">Цена Ozon Premium</label>
+																	<!--end::Label-->
+																	<!--begin::Input-->
+																	<input type="text" name="product_price_premium" class="form-control mb-2" placeholder="" value="" />
+																	<!--end::Input-->
 																</div>
 															</div>
 															<!--end::Input group-->
 														</div>
 														<!--end::Tab pane-->
 													</div>
-													
-													<!--begin::Input group-->
-													<div class="mb-10 row fv-row">
-														<div class="col-4">
-															<div class="d-flex">
-																<!--begin::Label-->
-																<label class="required form-label">Артикул</label>
-																<!--end::Label-->
-																<!--begin:Tooltip-->
-																<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
-																	<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-																		<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
-																		<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
-																	</svg>
-																</div>
-																<!--end:Tooltip-->
-															</div>
-															<!--begin::Checkbox-->
-															<div class="form-check form-check-custom form-check-solid mb-3">
-																<input class="form-check-input" type="checkbox" value="" id="vendor_code_auto"/>
-																<label class="form-check-label" for="vendor_code_auto">
-																	Сформировать автоматически
-																</label>
-															</div>
-															<!--end::Checkbox-->
-															<!--begin::Input-->
-															<div class="form-input">
-																<input type="text" name="vendor_code_add" class="form-control mb-2" value="" />
-															</div>
-															<!--end::Input-->
-														</div>
-														<div class="col-4">
-															<div class="d-flex">
-																<!--begin::Label-->
-																<label class="required form-label">Штрихкод</label>
-																<!--end::Label-->
-																<!--begin:Tooltip-->
-																<div class="form-label-tooltip ms-1" data-bs-toggle="tooltip" data-bs-placement="top" title="Всплывающая подсказка">
-																	<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-																		<rect width="15" height="15" rx="7.5" fill="#E8E8F1"/>
-																		<path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 4.00321C6.67157 4.00321 6 4.67695 6 5.50804V6.51125C6 6.78828 5.77614 7.01286 5.5 7.01286C5.22386 7.01286 5 6.78828 5 6.51125V5.50804C5 4.12289 6.11929 3 7.5 3H7.81007C9.01954 3 10 3.98361 10 5.19697V5.47535C10 6.31395 9.43416 7.0462 8.62462 7.25522C8.25697 7.35014 8 7.68269 8 8.06353V8.54601C8 8.82304 7.77614 9.04762 7.5 9.04762C7.22386 9.04762 7 8.82304 7 8.54601V8.06353C7 7.22493 7.56584 6.49267 8.37538 6.28366C8.74303 6.18874 9 5.85619 9 5.47535V5.19697C9 4.53768 8.46725 4.00321 7.81007 4.00321H7.5ZM7.50867 9.99357C7.78481 9.99357 8.00867 10.2181 8.00867 10.4952V11.4984C8.00867 11.7754 7.78481 12 7.50867 12C7.23252 12 7.00867 11.7754 7.00867 11.4984V10.4952C7.00867 10.2181 7.23252 9.99357 7.50867 9.99357Z" fill="#A4A4BA"/>
-																	</svg>
-																</div>
-																<!--end:Tooltip-->
-															</div>
-															<!--begin::Checkbox-->
-															<div class="form-check form-check-custom form-check-solid mb-3">
-																<input class="form-check-input" type="checkbox" value="" id="bar_code_auto"/>
-																<label class="form-check-label" for="bar_code_auto">
-																	Сформировать автоматически
-																</label>
-															</div>
-															<!--end::Checkbox-->
-															<!--begin::Input-->
-															<div class="form-input">
-																<input type="text" name="bar_code_add" class="form-control mb-2" value="" />
-															</div>
-															<!--end::Input-->
-														</div>
-													</div>
-													<!--end::Input group-->
-													<!--begin::Input group-->
-													<div class="mb-10 row fv-row">
-														<div class="col-3">
-															<!--begin::Label-->
-															<label class="form-label">Цена</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input type="text" name="product_price" class="form-control mb-2" placeholder="" value="" />
-															<!--end::Input-->
-														</div>
-														<div class="col-3">
-															<!--begin::Label-->
-															<label class="form-label">Цена со скидкой</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input type="text" name="product_price_discount" class="form-control mb-2" placeholder="" value="" />
-															<!--end::Input-->
-														</div>
-														<div class="col-3">
-															<!--begin::Label-->
-															<label class="form-label">Цена Ozon Premium</label>
-															<!--end::Label-->
-															<!--begin::Input-->
-															<input type="text" name="product_price_premium" class="form-control mb-2" placeholder="" value="" />
-															<!--end::Input-->
-														</div>
-													</div>
-													<!--end::Input group-->
 												</div>
 												<!--end::Card Body-->
 											</div>

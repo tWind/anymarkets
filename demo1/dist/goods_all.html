@@ -5,6 +5,7 @@
 		<base href="">
 		<title>Anymarkets</title>
 		<meta charset="utf-8" />
+		<meta name="viewport" content="width=1280">
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
 		<!--begin::Fonts-->
 		<link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -236,7 +237,7 @@
 															<tr class="text-start text-gray-400 fw-boldest fs-7 gs-0 align-middle">
 																<th class="w-10px pe-2 py-10">
 																	<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-																		<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
+																		<input class="form-check-input" id="products_table_head_check" type="checkbox" data-kt-check="true" data-am-check="true" data-am-check-val="0" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
 																	</div>
 																</th>
 																<th class="w-325px text-uppercase py-10">Наименование</th>
@@ -255,13 +256,13 @@
 																<!--begin::Checkbox-->
 																<td>
 																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
+																		<input class="form-check-input" data-am-check="true" data-am-check-val="1" type="checkbox" value="1" />
 																	</div>
 																</td>
 																<!--end::Checkbox-->
 																<td>
 																	<!--begin::Title-->
-																	<a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 0</a>
+																	<a href="#" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 0</a>
 																	<!--end::Title-->
 																</td>
 																<td>
@@ -312,13 +313,13 @@
 																<!--begin::Checkbox-->
 																<td>
 																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
+																		<input class="form-check-input" data-am-check="true" data-am-check-val="1" type="checkbox" value="1" />
 																	</div>
 																</td>
 																<!--end::Checkbox-->
 																<td>
 																	<!--begin::Title-->
-																	<a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 1</a>
+																	<a href="#" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 1</a>
 																	<!--end::Title-->
 																</td>
 																<td>
@@ -369,13 +370,13 @@
 																<!--begin::Checkbox-->
 																<td>
 																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
+																		<input class="form-check-input" type="checkbox" data-am-check="true" data-am-check-val="1" value="1" />
 																	</div>
 																</td>
 																<!--end::Checkbox-->
 																<td>
 																	<!--begin::Title-->
-																	<a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 2</a>
+																	<a href="#" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 2</a>
 																	<!--end::Title-->
 																</td>
 																<td>
@@ -426,13 +427,13 @@
 																<!--begin::Checkbox-->
 																<td>
 																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
+																		<input class="form-check-input" type="checkbox" data-am-check="true" data-am-check-val="1" value="1" />
 																	</div>
 																</td>
 																<!--end::Checkbox-->
 																<td>
 																	<!--begin::Title-->
-																	<a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар с длинным названием, которое не влезает в одну строку</a>
+																	<a href="#" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар с длинным названием, которое не влезает в одну строку</a>
 																	<!--end::Title-->
 																</td>
 																<td>
@@ -490,14 +491,14 @@
 												<!--begin::Table container-->
 												<div class="table-responsive">
 													<!--begin::Table-->
-													<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table">
+													<table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_ecommerce_products_table_2">
 														<!--begin::Table head-->
 														<thead>
 															<!--begin::Table row-->
 															<tr class="text-start text-gray-400 fw-boldest fs-7 gs-0 align-middle">
 																<th class="w-10px pe-2 py-10">
 																	<div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-																		<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table .form-check-input" value="1" />
+																		<input class="form-check-input" type="checkbox" data-kt-check="true" data-kt-check-target="#kt_ecommerce_products_table_2 .form-check-input" value="1" />
 																	</div>
 																</th>
 																<th class="w-325px text-uppercase py-10">Наименование</th>
@@ -516,13 +517,13 @@
 																<!--begin::Checkbox-->
 																<td>
 																	<div class="form-check form-check-sm form-check-custom form-check-solid">
-																		<input class="form-check-input" type="checkbox" value="1" />
+																		<input class="form-check-input" type="checkbox" value="1" data-am-check-val="1" />
 																	</div>
 																</td>
 																<!--end::Checkbox-->
 																<td>
 																	<!--begin::Title-->
-																	<a href="../../demo1/dist/apps/ecommerce/catalog/edit-product.html" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 0</a>
+																	<a href="#" class="text-gray-800 text-hover-link-active fs-5 fw-boldest" data-kt-ecommerce-product-filter="product_name">Товар 0</a>
 																	<!--end::Title-->
 																</td>
 																<td>
@@ -601,7 +602,7 @@
 												<!--end::Svg Icon--> Новый товар</a>
 											<!--end::Add product-->
 											<!--begin::Select2-->
-											<div class="goods-select d-flex align-items-center">
+											<div class="goods-select d-flex align-items-center d-none" id="product_add_action">
 												<span class="fw-bolder flex-shrink-0 me-3">Действия с выбранными:</span>
 												<select class="form-select form-select-solid fw-boldest min-w-250px" data-control="select2" data-hide-search="true" data-placeholder="Выберите действие">
 													<option selected value="marketplace">Выгрузить в маркетплейсы</option>
@@ -660,6 +661,7 @@
 		<script src="assets/js/custom/utilities/modals/upgrade-plan.js"></script>
 		<script src="assets/js/custom/utilities/modals/create-app.js"></script>
 		<script src="assets/js/custom/utilities/modals/users-search.js"></script>
+		<script src="assets/js/custom/apps/anymarket/goods-all.js"></script>
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->
 	</body>
